@@ -1,0 +1,292 @@
+[
+ {
+  "slug": "tuschen-secondary-school",
+  "title": "Tuschen Secondary School",
+  "place": "Tuschen, East Bank Essequibo",
+  "cat": "Institutional",
+  "featured": 1,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/tuschen-secondary-school/",
+  "original_folder": "client-originals/projects/tuschen-secondary-school"
+ },
+ {
+  "slug": "belco-shipping-office",
+  "title": "Belco Shipping Office",
+  "place": "South Road, Georgetown",
+  "cat": "Commercial",
+  "featured": 1,
+  "count": 6,
+  "source": "https://elitearchitecturegy.com/south-road-belco-shipping-office/",
+  "original_folder": "client-originals/projects/south-road-belco-shipping-office"
+ },
+ {
+  "slug": "sandy-babb-street-outdoor-bar",
+  "title": "Sandy Babb St Outdoor Bar",
+  "place": "Sandy Babb Street, Kitty",
+  "cat": "Commercial",
+  "featured": 1,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/sandy-babb-st-outdoor-bar/",
+  "original_folder": "client-originals/projects/sandy-babb-st-outdoor-bar"
+ },
+ {
+  "slug": "republic-park-residence-1",
+  "title": "Republic Park Residence I",
+  "place": "Republic Park, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/republic-park-residential-neil-marks/",
+  "original_folder": "client-originals/projects/republic-park-residential-neil-marks"
+ },
+ {
+  "slug": "republic-park-residence-2",
+  "title": "Republic Park Residence II",
+  "place": "Republic Park, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 7,
+  "source": "https://elitearchitecturegy.com/republic-park-residential-yolander/",
+  "original_folder": "client-originals/projects/republic-park-residential-yolander"
+ },
+ {
+  "slug": "republic-park-apartments",
+  "title": "Republic Park Apartment Building",
+  "place": "Republic Park, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 8,
+  "source": "https://elitearchitecturegy.com/republic-park-apartment-building-tricia/",
+  "original_folder": "client-originals/projects/republic-park-apartment-building-tricia"
+ },
+ {
+  "slug": "prospect-warehouse",
+  "title": "Prospect Warehouse",
+  "place": "Prospect, East Bank Demerara",
+  "cat": "Commercial",
+  "featured": 1,
+  "count": 11,
+  "source": "https://elitearchitecturegy.com/prospect-warehouse-featured/",
+  "original_folder": "client-originals/projects/prospect-warehouse-featured"
+ },
+ {
+  "slug": "peters-hall-residence-2",
+  "title": "Peter's Hall Residence II",
+  "place": "Peter's Hall, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 15,
+  "source": "https://elitearchitecturegy.com/peters-hall-residential-2-featured/",
+  "original_folder": "client-originals/projects/peters-hall-residential-2-featured"
+ },
+ {
+  "slug": "peters-hall-residence-1",
+  "title": "Peter's Hall Residence I",
+  "place": "Peter's Hall, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/peters-hall-residential/",
+  "original_folder": "client-originals/projects/peters-hall-residential"
+ },
+ {
+  "slug": "method4-engineering-office",
+  "title": "Method4 Engineering Office",
+  "place": "Guyana",
+  "cat": "Commercial",
+  "featured": 0,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/office-building-method4-engineering/",
+  "original_folder": "client-originals/projects/office-building-method4-engineering"
+ },
+ {
+  "slug": "mon-repos-apartments",
+  "title": "Mon Repos Apartment Building",
+  "place": "Mon Repos, East Coast Demerara",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 13,
+  "source": "https://elitearchitecturegy.com/mon-repos-apartment-building-featured-project/",
+  "original_folder": "client-originals/projects/mon-repos-apartment-building-featured-project"
+ },
+ {
+  "slug": "malgre-tout-apartments",
+  "title": "Malgre Tout Apartment Building",
+  "place": "Malgre Tout, West Bank Demerara",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 16,
+  "source": "https://elitearchitecturegy.com/malgre-tout-apartment-building-featured-project/",
+  "original_folder": "client-originals/projects/malgre-tout-apartment-building-featured-project"
+ },
+ {
+  "slug": "la-retraite-residence",
+  "title": "La Retraite Residence",
+  "place": "La Retraite, West Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/la-retraite-residential/",
+  "original_folder": "client-originals/projects/la-retraite-residential"
+ },
+ {
+  "slug": "lbi-residence",
+  "title": "L.B.I Residence",
+  "place": "L.B.I, East Coast Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/l-b-i-residential-building-pyo/",
+  "original_folder": "client-originals/projects/l-b-i-residential-building-pyo"
+ },
+ {
+  "slug": "floral-park-residence",
+  "title": "Floral Park Residence",
+  "place": "Floral Park, Guyana",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 15,
+  "source": "https://elitearchitecturegy.com/floral-park-residential-featured-project/",
+  "original_folder": "client-originals/projects/floral-park-residential-featured-project"
+ },
+ {
+  "slug": "essequibo-coast-residence",
+  "title": "Essequibo Coast Residence",
+  "place": "Essequibo Coast",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/essequibo-coast-residential-dave/",
+  "original_folder": "client-originals/projects/essequibo-coast-residential-dave"
+ },
+ {
+  "slug": "east-bank-commercial-building-warehouses",
+  "title": "East Bank Commercial Building & Warehouses",
+  "place": "East Bank Demerara",
+  "cat": "Commercial",
+  "featured": 1,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/east-bank-demerara-commercial-building-warehouses-jop-featured-project/",
+  "original_folder": "client-originals/projects/east-bank-demerara-commercial-building-warehouses-jop-featured-project"
+ },
+ {
+  "slug": "earls-court-apartments",
+  "title": "Earl's Court Apartment Building",
+  "place": "Earl's Court, East Coast Demerara",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/earls-court-apartment-building-featured/",
+  "original_folder": "client-originals/projects/earls-court-apartment-building-featured"
+ },
+ {
+  "slug": "herstelling-apartments",
+  "title": "Herstelling Apartment Building",
+  "place": "Herstelling, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 7,
+  "source": "https://elitearchitecturegy.com/apartment-building-herstelling/",
+  "original_folder": "client-originals/projects/apartment-building-herstelling"
+ },
+ {
+  "slug": "covent-gardens-apartments",
+  "title": "Covent Gardens Apartment Building",
+  "place": "Covent Gardens, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 3,
+  "source": "https://elitearchitecturegy.com/covent-gardens-apartment-building/",
+  "original_folder": "client-originals/projects/covent-gardens-apartment-building"
+ },
+ {
+  "slug": "cummings-lodge-multipurpose-building",
+  "title": "Cummings Lodge Multipurpose Building",
+  "place": "Cummings Lodge, Georgetown",
+  "cat": "Commercial",
+  "featured": 1,
+  "count": 5,
+  "source": "https://elitearchitecturegy.com/cummings-lodge-multipurpose-building-main-featured-project/",
+  "original_folder": "client-originals/projects/cummings-lodge-multipurpose-building-main-featured-project"
+ },
+ {
+  "slug": "demerara-estates-landscaping",
+  "title": "Demerara Estates Landscaping",
+  "place": "Demerara Estates, Guyana",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 15,
+  "source": "https://elitearchitecturegy.com/demerara-estates-landscaping-featurd-project/",
+  "original_folder": "client-originals/projects/demerara-estates-landscaping-featurd-project"
+ },
+ {
+  "slug": "demerara-estates-residence-1",
+  "title": "Demerara Estates Residence I",
+  "place": "Demerara Estates, Guyana",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 8,
+  "source": "https://elitearchitecturegy.com/demerara-estates-residential-featured/",
+  "original_folder": "client-originals/projects/demerara-estates-residential-featured"
+ },
+ {
+  "slug": "demerara-estates-residence-2",
+  "title": "Demerara Estates Residence II",
+  "place": "Demerara Estates, Guyana",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 20,
+  "source": "https://elitearchitecturegy.com/demerara-estates-residential-building-featured-project/",
+  "original_folder": "client-originals/projects/demerara-estates-residential-building-featured-project"
+ },
+ {
+  "slug": "peters-hall-residence-3",
+  "title": "Peter's Hall Residence III",
+  "place": "Peter's Hall, East Bank Demerara",
+  "cat": "Residential",
+  "featured": 1,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/peters-hall-residential-sr-featured-project-2/",
+  "original_folder": "client-originals/projects/peters-hall-residential-sr-featured-project-2"
+ },
+ {
+  "slug": "college-dormitory",
+  "title": "College Dormitory",
+  "place": "Guyana",
+  "cat": "Institutional",
+  "featured": 0,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/dormitory-presidents-college/",
+  "original_folder": "client-originals/projects/dormitory-presidents-college"
+ },
+ {
+  "slug": "providence-commercial-building",
+  "title": "Providence Three-Storey Commercial Building",
+  "place": "Providence, East Bank Demerara",
+  "cat": "Commercial",
+  "featured": 0,
+  "count": 8,
+  "source": "https://elitearchitecturegy.com/commericial-three-3-story-building-providence-guyana/",
+  "original_folder": "client-originals/projects/commericial-three-3-story-building-providence-guyana"
+ },
+ {
+  "slug": "east-bank-demerara-residence",
+  "title": "East Bank Demerara Residence",
+  "place": "East Bank Demerara",
+  "cat": "Residential",
+  "featured": 0,
+  "count": 10,
+  "source": "https://elitearchitecturegy.com/east-bank-demerara/",
+  "original_folder": "client-originals/projects/east-bank-demerara"
+ },
+ {
+  "slug": "conceptual-design",
+  "title": "Conceptual Design",
+  "place": "Guyana",
+  "cat": "Commercial",
+  "featured": 0,
+  "count": 9,
+  "source": "https://elitearchitecturegy.com/conceptual-design/",
+  "original_folder": "client-originals/projects/conceptual-design"
+ }
+]

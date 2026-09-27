@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Elite Architecture — Bold Dark &amp; Dramatic</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0B0B0C;color:#F2F0EB;font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#F2F0EB;text-decoration:none}
+a:hover{color:#F5A524}
+img{display:block;max-width:100%}
+::selection{background:#F5A524;color:#0B0B0C}
+@keyframes heroIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(11,11,12,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(242,240,235,.08)">
+  <div style="max-width:1560px;margin:0 auto;padding:16px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:center"><img src="../assets/logo-white.png" alt="Elite Architecture" style="height:clamp(34px,4vw,46px);width:auto;display:block"></a>
+    <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:32px;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase">
+        <a href="#services" style="color:#B8B5AE" style-hover="color:#F5A524">Services</a>
+        <a href="#projects" style="color:#B8B5AE" style-hover="color:#F5A524">Projects</a>
+        <a href="#about" style="color:#B8B5AE" style-hover="color:#F5A524">About</a>
+        <a href="#testimonials" style="color:#B8B5AE" style-hover="color:#F5A524">Clients</a>
+      </nav>
+      <a href="#contact" style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;background:#F5A524;color:#0B0B0C;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 0 32px rgba(245,165,36,.5);color:#0B0B0C;transform:translateY(-1px)">Start a project</a>
+    </sc-if>
+    <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="background:none;border:1px solid rgba(242,240,235,.2);padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-width:44px;min-height:44px;justify-content:center;align-items:center">
+        <span style="display:block;width:22px;height:2px;background:#F2F0EB"></span>
+        <span style="display:block;width:22px;height:2px;background:#F5A524"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#0B0B0C;display:flex;flex-direction:column;padding:20px clamp(20px,4vw,56px) 32px;animation:fadeIn .25s ease">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <img src="../assets/logo-white.png" alt="Elite Architecture" style="height:36px;width:auto;display:block">
+      <button onClick="{{ toggleMenu }}" aria-label="Close" style="background:none;border:1px solid rgba(242,240,235,.2);color:#F2F0EB;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;min-height:44px;padding:0 16px;font-family:inherit">Close</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;margin-top:40px;font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,12vw,84px);line-height:1;letter-spacing:.02em">
+      <a href="#services" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(242,240,235,.1);display:flex;justify-content:space-between;align-items:baseline"><span>Services</span><span style="font-size:16px;color:#F5A524;font-family:'Space Grotesk',sans-serif">01</span></a>
+      <a href="#projects" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(242,240,235,.1);display:flex;justify-content:space-between;align-items:baseline"><span>Projects</span><span style="font-size:16px;color:#F5A524;font-family:'Space Grotesk',sans-serif">02</span></a>
+      <a href="#about" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(242,240,235,.1);display:flex;justify-content:space-between;align-items:baseline"><span>About</span><span style="font-size:16px;color:#F5A524;font-family:'Space Grotesk',sans-serif">03</span></a>
+      <a href="#testimonials" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(242,240,235,.1);display:flex;justify-content:space-between;align-items:baseline"><span>Clients</span><span style="font-size:16px;color:#F5A524;font-family:'Space Grotesk',sans-serif">04</span></a>
+    </nav>
+    <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:auto;display:block;text-align:center;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:18px;background:#F5A524;color:#0B0B0C">Start a project</a>
+    <a href="tel:+5926189518" style="margin-top:16px;text-align:center;font-size:14px;color:#B8B5AE">+592-618-9518 · Georgetown, Guyana</a>
+  </div>
+</sc-if>
+
+<main id="top">
+  <!-- Hero -->
+  <section style="position:relative;height:100svh;min-height:680px;overflow:hidden;display:flex;align-items:flex-end" data-screen-label="Hero">
+    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2200&q=80" alt="Dramatic modern tower at night" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.25) 40%,rgba(11,11,12,.92) 100%)"></div>
+    <div style="position:relative;width:100%;max-width:1560px;margin:0 auto;padding:0 clamp(20px,4vw,56px) clamp(40px,6vw,80px);animation:heroIn 1s cubic-bezier(.2,.7,.2,1) both">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#B8B5AE">
+        <span style="width:40px;height:2px;background:#F5A524;display:block"></span>
+        Architecture &amp; Construction Consultancy — Georgetown, Guyana
+      </div>
+      <h1 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(64px,13vw,220px);line-height:.88;letter-spacing:.005em;text-wrap:balance">Elevating<br>Luxury <span style="color:#F5A524">Living</span></h1>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(28px,4vw,48px)">
+        <p style="margin:0;max-width:520px;font-size:clamp(16px,1.4vw,20px);line-height:1.5;color:#D6D3CC;font-weight:300">Through cutting-edge architecture. 18+ years of building designs, 3D concepts and engineering consultancy across Guyana.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="#projects" style="display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:18px 32px;background:#F5A524;color:#0B0B0C;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 0 48px rgba(245,165,36,.55);transform:translateY(-2px);color:#0B0B0C">See the work <span aria-hidden="true">↓</span></a>
+          <a href="tel:+5926189518" style="display:inline-flex;align-items:center;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:18px 28px;border:1px solid rgba(242,240,235,.35);color:#F2F0EB;transition:border-color .3s ease" style-hover="border-color:#F5A524;color:#F5A524">+592-618-9518</a>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;right:clamp(20px,4vw,56px);top:calc(50% - 60px);display:flex;flex-direction:column;align-items:center;gap:12px;color:#B8B5AE;font-size:11px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl;white-space:nowrap">
+      <span style="width:1px;height:60px;background:linear-gradient(180deg,#F5A524,transparent);display:block;animation:pulse 2.4s ease infinite"></span>
+      4.9 ★ · 42 Google reviews
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" style="padding:clamp(80px,10vw,160px) clamp(20px,4vw,56px);scroll-margin-top:72px;position:relative" data-screen-label="Services">
+    <div style="max-width:1560px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,72px)" data-reveal>
+        <div style="display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px)">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,12vw,180px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(245,165,36,.6)">01</span>
+          <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6vw,96px);line-height:.9">What we<br>build</h2>
+        </div>
+        <p style="margin:0;max-width:380px;font-size:15px;line-height:1.6;color:#9A978F">Seven disciplines under one roof — from the first 3D concept to the last as-built drawing.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0">
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">01</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">Building Designs</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Residential and commercial architecture designed around how you live and work.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">02</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">3D Concept Designs</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Photoreal visualisations so you see the finished building before ground is broken.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">03</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">Schematic Designs</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Early plans that test layout, massing and budget before detail begins.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">04</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">Construction Drawings</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Complete, buildable documentation your contractor can price and execute.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">05</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">As-Built Drawings</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Accurate records of what was constructed, for approvals, renovations and resale.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">06</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">Landscape Designs</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Gardens, courtyards and outdoor rooms designed as part of the architecture.</p>
+        </div>
+        <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;min-height:240px;box-shadow:inset 0 0 0 1px rgba(242,240,235,.08);transition:background .3s ease,box-shadow .3s ease" style-hover="background:#141416;box-shadow:inset 0 0 0 1px rgba(245,165,36,.6),0 0 40px rgba(245,165,36,.12);position:relative;z-index:1" data-reveal>
+          <span style="font-size:13px;letter-spacing:.14em;color:#F5A524">07</span>
+          <h3 style="margin:auto 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1">Civil Engineering Consultancy</h3>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Structural and site engineering that keeps ambitious designs safe and sound.</p>
+        </div>
+        <a href="#contact" style="background:#F5A524;color:#0B0B0C;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;justify-content:flex-end;gap:12px;min-height:240px;transition:box-shadow .3s ease" style-hover="box-shadow:0 0 60px rgba(245,165,36,.45);color:#0B0B0C" data-reveal>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,2.6vw,40px);line-height:1">Not sure where to start?</span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Talk to us →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" style="padding:0 0 clamp(80px,10vw,160px);scroll-margin-top:72px;overflow:hidden" data-screen-label="Projects">
+    <div style="max-width:1560px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,72px)" data-reveal>
+        <div style="display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px)">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,12vw,180px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(245,165,36,.6)">02</span>
+          <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6vw,96px);line-height:.9">Featured<br>projects</h2>
+        </div>
+        <p style="margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A978F">Scroll sideways →</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(20px,4vw,56px) 24px;scrollbar-width:none" data-reveal>
+      <a href="#contact" style="flex:0 0 min(84vw,720px);scroll-snap-align:start;position:relative;aspect-ratio:4/3;overflow:hidden;background:#141416;display:block;color:#F2F0EB" style-hover="color:#F2F0EB">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="Tuschen Secondary School" style="width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);filter:brightness(.8)" style-hover="transform:scale(1.06);filter:brightness(1)">
+        <div style="position:absolute;inset:auto 0 0 0;padding:28px;background:linear-gradient(180deg,rgba(11,11,12,0),rgba(11,11,12,.9));display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+          <div>
+            <p style="margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#F5A524">Education · Tuschen</p>
+            <h3 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(32px,3.4vw,52px);line-height:.95">Tuschen Secondary School</h3>
+          </div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,240,235,.4)">01</span>
+        </div>
+      </a>
+      <a href="#contact" style="flex:0 0 min(84vw,720px);scroll-snap-align:start;position:relative;aspect-ratio:4/3;overflow:hidden;background:#141416;display:block;color:#F2F0EB" style-hover="color:#F2F0EB">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80" alt="Belco Shipping Office" style="width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);filter:brightness(.8)" style-hover="transform:scale(1.06);filter:brightness(1)">
+        <div style="position:absolute;inset:auto 0 0 0;padding:28px;background:linear-gradient(180deg,rgba(11,11,12,0),rgba(11,11,12,.9));display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+          <div>
+            <p style="margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#F5A524">Commercial · South Road</p>
+            <h3 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(32px,3.4vw,52px);line-height:.95">Belco Shipping Office</h3>
+          </div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,240,235,.4)">02</span>
+        </div>
+      </a>
+      <a href="#contact" style="flex:0 0 min(84vw,720px);scroll-snap-align:start;position:relative;aspect-ratio:4/3;overflow:hidden;background:#141416;display:block;color:#F2F0EB" style-hover="color:#F2F0EB">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" alt="Outdoor Bar" style="width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);filter:brightness(.8)" style-hover="transform:scale(1.06);filter:brightness(1)">
+        <div style="position:absolute;inset:auto 0 0 0;padding:28px;background:linear-gradient(180deg,rgba(11,11,12,0),rgba(11,11,12,.9));display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+          <div>
+            <p style="margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#F5A524">Hospitality · Sandy Babb St</p>
+            <h3 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(32px,3.4vw,52px);line-height:.95">Outdoor Bar</h3>
+          </div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,240,235,.4)">03</span>
+        </div>
+      </a>
+      <a href="#contact" style="flex:0 0 min(60vw,360px);scroll-snap-align:start;aspect-ratio:3/4;border:1px solid rgba(245,165,36,.5);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;gap:12px;transition:background .3s ease,box-shadow .3s ease" style-hover="background:rgba(245,165,36,.08);box-shadow:0 0 48px rgba(245,165,36,.2)">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,3.4vw,52px);line-height:.95">Your project<br>next</span>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#F5A524">Start a conversation →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" style="position:relative;overflow:hidden;scroll-margin-top:72px;background:#111113" data-screen-label="About">
+    <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:stretch">
+      <div style="padding:clamp(72px,9vw,140px) clamp(20px,4vw,56px)" data-reveal>
+        <div style="display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px);margin-bottom:32px">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,12vw,180px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(245,165,36,.6)">03</span>
+          <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6vw,96px);line-height:.9">Why<br>Elite</h2>
+        </div>
+        <p style="margin:0 0 32px;font-size:clamp(18px,1.6vw,24px);line-height:1.45;color:#D6D3CC;font-weight:300;max-width:560px">Led by Vickram, Elite Architecture is a young, dynamic team backed by eighteen years of built work in Guyana. Design, engineering consultancy and construction documentation happen under one roof — so nothing gets lost between the drawing and the site.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+          <div style="background:#111113;padding:24px 0 24px 24px;border-left:2px solid #F5A524"><p style="margin:0 0 6px;font-weight:600;font-size:15px">One team, end to end</p><p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Concept through as-built, no hand-offs.</p></div>
+          <div style="background:#111113;padding:24px 0 24px 24px;border-left:2px solid #F5A524"><p style="margin:0 0 6px;font-weight:600;font-size:15px">Unmatched service</p><p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">4.9 stars across 42 Google reviews.</p></div>
+          <div style="background:#111113;padding:24px 0 24px 24px;border-left:2px solid #F5A524"><p style="margin:0 0 6px;font-weight:600;font-size:15px">Built for Guyana</p><p style="margin:0;font-size:14px;line-height:1.6;color:#9A978F">Climate, materials and approvals handled.</p></div>
+        </div>
+      </div>
+      <div style="position:relative;min-height:420px" data-reveal>
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=80" alt="Construction site at dusk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75)">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,#111113 0%,rgba(17,17,19,0) 30%)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section id="stats" style="padding:clamp(72px,9vw,140px) clamp(20px,4vw,56px);border-bottom:1px solid rgba(242,240,235,.08)" data-screen-label="Stats">
+    <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:0">
+      <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);box-shadow:inset 0 0 0 1px rgba(242,240,235,.08)">
+        <p style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8vw,140px);line-height:.9;color:#F2F0EB">{{ years }}<span style="color:#F5A524">+</span></p>
+        <p style="margin:14px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A978F">Years of experience</p>
+      </div>
+      <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);box-shadow:inset 0 0 0 1px rgba(242,240,235,.08)">
+        <p style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8vw,140px);line-height:.9;color:#F2F0EB">{{ clients }}<span style="color:#F5A524">+</span></p>
+        <p style="margin:14px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A978F">Happy clients</p>
+      </div>
+      <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);box-shadow:inset 0 0 0 1px rgba(242,240,235,.08)">
+        <p style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8vw,140px);line-height:.9;color:#F2F0EB">{{ rating }}<span style="color:#F5A524;font-size:.4em;vertical-align:.9em">★</span></p>
+        <p style="margin:14px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A978F">Google rating</p>
+      </div>
+      <div style="background:#0B0B0C;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);box-shadow:inset 0 0 0 1px rgba(242,240,235,.08)">
+        <p style="margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8vw,140px);line-height:.9;color:#F2F0EB">{{ services }}</p>
+        <p style="margin:14px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A978F">Services offered</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" style="padding:clamp(80px,10vw,160px) clamp(20px,4vw,56px);scroll-margin-top:72px" data-screen-label="Testimonials">
+    <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,80px);align-items:start">
+      <div style="display:flex;align-items:flex-end;gap:clamp(16px,3vw,40px)" data-reveal>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,12vw,180px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(245,165,36,.6)">04</span>
+        <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6vw,96px);line-height:.9">Client<br>voices</h2>
+      </div>
+      <div style="grid-column:span 1" data-reveal>
+        <span style="display:block;font-family:'Bebas Neue',sans-serif;font-size:120px;line-height:.6;color:#F5A524;margin-bottom:8px">“</span>
+        <blockquote style="margin:0;font-size:clamp(22px,2.4vw,36px);line-height:1.35;font-weight:300;color:#F2F0EB;text-wrap:pretty">Elite Architecture has a young, dynamic and competent team of professionals... their customer service is unmatched in the industry.</blockquote>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(242,240,235,.12)">
+          <div><p style="margin:0;font-weight:600;font-size:15px">Susan Rodrigues</p><p style="margin:4px 0 0;font-size:13px;color:#9A978F">Google review</p></div>
+          <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(242,240,235,.15);font-size:13px"><span style="color:#F5A524;letter-spacing:.1em">★★★★★</span><span style="font-weight:600">4.9</span><span style="color:#9A978F">· 42 reviews</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="position:relative;overflow:hidden;scroll-margin-top:72px" data-screen-label="CTA">
+    <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2200&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.4)">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(245,165,36,.18),transparent 60%)"></div>
+    <div style="position:relative;max-width:1560px;margin:0 auto;padding:clamp(96px,14vw,220px) clamp(20px,4vw,56px)" data-reveal>
+      <p style="margin:0 0 20px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#F5A524">Start a project</p>
+      <h2 style="margin:0 0 clamp(32px,4vw,56px);font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(56px,10vw,160px);line-height:.88;text-wrap:balance;max-width:1100px">Let's build<br>something bold.</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+        <a href="tel:+5926189518" style="display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:20px 36px;background:#F5A524;color:#0B0B0C;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 0 56px rgba(245,165,36,.6);transform:translateY(-2px);color:#0B0B0C">Call +592-618-9518</a>
+        <a href="mailto:hello@elitearchitecturegy.com" style="display:inline-flex;align-items:center;font-size:15px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:20px 32px;border:1px solid rgba(242,240,235,.35);transition:border-color .3s ease" style-hover="border-color:#F5A524;color:#F5A524">Email the studio</a>
+        <span style="font-size:14px;color:#9A978F;margin-left:8px">Georgetown, Guyana</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:clamp(48px,6vw,80px) clamp(20px,4vw,56px) 28px;border-top:1px solid rgba(242,240,235,.08)" data-screen-label="Footer">
+  <div style="max-width:1560px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:40px;padding-bottom:40px">
+      <div>
+        <img src="../assets/logo-white.png" alt="Elite Architecture" style="height:52px;width:auto;display:block;margin:0 0 20px">
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#9A978F;max-width:320px">Elevating luxury living through cutting-edge architecture. Architecture &amp; construction consultancy, Georgetown, Guyana.</p>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:12px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">
+        <a href="#services" style="color:#B8B5AE" style-hover="color:#F5A524">Services</a>
+        <a href="#projects" style="color:#B8B5AE" style-hover="color:#F5A524">Projects</a>
+        <a href="#about" style="color:#B8B5AE" style-hover="color:#F5A524">About</a>
+        <a href="#testimonials" style="color:#B8B5AE" style-hover="color:#F5A524">Clients</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;color:#9A978F">
+        <a href="tel:+5926189518" style-hover="color:#F5A524">+592-618-9518</a>
+        <span>Georgetown, Guyana</span>
+        <a href="https://elitearchitecturegy.com" style-hover="color:#F5A524">elitearchitecturegy.com</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:20px;border-top:1px solid rgba(242,240,235,.08);font-size:12px;letter-spacing:.06em;color:#9A978F">
+      <span>© 2026 Elite Architecture</span>
+      <span>18+ years · 4.9 ★ Google</span>
+    </div>
+  </div>
+</footer>
+
+<a href="../index.html" style="position:fixed;left:16px;bottom:16px;z-index:70;font-size:12px;font-weight:600;letter-spacing:.08em;padding:10px 16px;background:#F2F0EB;color:#0B0B0C;box-shadow:0 6px 24px rgba(0,0,0,.4)" style-hover="background:#F5A524;color:#0B0B0C">← Back to all demos</a>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0B0B0C"/><text x="50" y="64" text-anchor="middle" font-family="Impact,sans-serif" font-size="40" fill="#F5A524">EA</text></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false, isMobile: false, p: 0, counted: false };
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 900px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches, menuOpen: false });
+    this.onMq();
+    this.mq.addEventListener('change', this.onMq);
+    this.seen = new WeakSet();
+    this.tries = 0;
+    this.poll = setInterval(() => {
+      this.setupReveal();
+      if (!this.countersReady) this.setupCounters();
+      if (++this.tries > 40 && this.countersReady) clearInterval(this.poll);
+    }, 250);
+    setTimeout(() => { if (!this.countersReady) this.setState({ p: 1 }); }, 4000);
+  }
+  componentWillUnmount() { this.mq && this.mq.removeEventListener('change', this.onMq); clearInterval(this.poll); }
+  setupReveal() {
+    if (!this.io) this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    const io = this.io;
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (this.seen.has(el)) return;
+      this.seen.add(el);
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.style.opacity = '0'; el.style.transform = 'translateY(32px)';
+        el.style.transition = 'opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)';
+        io.observe(el);
+      }
+    });
+  }
+  setupCounters() {
+    const el = document.getElementById('stats');
+    if (!el) return;
+    this.countersReady = true;
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting) && !this.state.counted) {
+        this.setState({ counted: true });
+        io.disconnect();
+        const t0 = performance.now(), dur = 1800;
+        const tick = now => {
+          const t = Math.min(1, (now - t0) / dur);
+          const p = 1 - Math.pow(1 - t, 3);
+          this.setState({ p });
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.3 });
+    io.observe(el);
+  }
+  renderVals() {
+    const { menuOpen, isMobile, p } = this.state;
+    return {
+      showDesktopNav: !isMobile,
+      showBurger: isMobile,
+      menuOpen,
+      years: Math.round(18 * p),
+      clients: Math.round(42 * p),
+      rating: (4.9 * p).toFixed(1),
+      services: String(Math.round(7 * p)).padStart(2, '0'),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

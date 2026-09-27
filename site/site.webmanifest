@@ -1,0 +1,13 @@
+{
+  "name": "Elite Architecture",
+  "short_name": "Elite Arch",
+  "description": "Architecture & construction consultancy in Georgetown, Guyana.",
+  "start_url": "./index.html",
+  "display": "browser",
+  "background_color": "#F5F2EC",
+  "theme_color": "#F5F2EC",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

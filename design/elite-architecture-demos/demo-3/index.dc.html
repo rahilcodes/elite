@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Elite Architecture — Warm Contemporary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FBF8F3;color:#24211D;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#24211D;text-decoration:none}
+a:hover{color:#C2643C}
+img{display:block;max-width:100%}
+@keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(251,248,243,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(36,33,29,.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:center"><img src="../assets/logo-dark.png" alt="Elite Architecture" style="height:clamp(34px,4vw,46px);width:auto;display:block"></a>
+    <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:28px;font-size:15px;font-weight:500">
+        <a href="#services" style="color:#5A544C" style-hover="color:#C2643C">Services</a>
+        <a href="#projects" style="color:#5A544C" style-hover="color:#C2643C">Projects</a>
+        <a href="#about" style="color:#5A544C" style-hover="color:#C2643C">About</a>
+        <a href="#testimonials" style="color:#5A544C" style-hover="color:#C2643C">Reviews</a>
+      </nav>
+      <a href="#contact" style="font-size:15px;font-weight:600;padding:12px 20px;border-radius:999px;background:#C2643C;color:#FBF8F3;box-shadow:0 6px 18px rgba(194,100,60,.25);transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-1px);box-shadow:0 10px 24px rgba(194,100,60,.35);color:#FBF8F3">Book a Consultation</a>
+    </sc-if>
+    <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="background:#F1EAE0;border:0;border-radius:12px;padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:5px;min-width:44px;min-height:44px;justify-content:center;align-items:center">
+        <span style="display:block;width:20px;height:2px;border-radius:2px;background:#24211D"></span>
+        <span style="display:block;width:20px;height:2px;border-radius:2px;background:#24211D"></span>
+        <span style="display:block;width:20px;height:2px;border-radius:2px;background:#24211D"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#FBF8F3;display:flex;flex-direction:column;padding:18px clamp(20px,4vw,40px) 28px;animation:fadeIn .25s ease">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <img src="../assets/logo-dark.png" alt="Elite Architecture" style="height:36px;width:auto;display:block">
+      <button onClick="{{ toggleMenu }}" aria-label="Close" style="background:#F1EAE0;border:0;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;min-height:44px;padding:0 18px;color:#24211D;font-family:inherit">Close</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:6px;margin-top:36px;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,8vw,44px);font-weight:600;letter-spacing:-.02em">
+      <a href="#services" onClick="{{ closeMenu }}" style="padding:14px 18px;border-radius:16px" style-hover="background:#F1EAE0">Services</a>
+      <a href="#projects" onClick="{{ closeMenu }}" style="padding:14px 18px;border-radius:16px" style-hover="background:#F1EAE0">Projects</a>
+      <a href="#about" onClick="{{ closeMenu }}" style="padding:14px 18px;border-radius:16px" style-hover="background:#F1EAE0">About</a>
+      <a href="#testimonials" onClick="{{ closeMenu }}" style="padding:14px 18px;border-radius:16px" style-hover="background:#F1EAE0">Reviews</a>
+    </nav>
+    <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:auto;display:block;text-align:center;font-size:16px;font-weight:600;padding:18px;border-radius:999px;background:#C2643C;color:#FBF8F3">Book a Consultation</a>
+    <a href="tel:+5926189518" style="margin-top:14px;text-align:center;font-size:15px;color:#5A544C">+592-618-9518 · Georgetown, Guyana</a>
+  </div>
+</sc-if>
+
+<main id="top">
+  <!-- Hero -->
+  <section style="padding:clamp(40px,6vw,88px) clamp(20px,4vw,40px) clamp(56px,7vw,96px)" data-screen-label="Hero">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,72px);align-items:center;animation:heroIn .9s cubic-bezier(.2,.7,.2,1) both">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:#FFFFFF;border:1px solid rgba(36,33,29,.08);box-shadow:0 4px 14px rgba(36,33,29,.06);font-size:13px;font-weight:500;margin-bottom:28px;white-space:nowrap">
+          <span style="display:inline-flex;gap:2px;color:#E8A33D;font-size:13px;letter-spacing:.05em">★★★★★</span>
+          <span><strong style="font-weight:600">4.9</strong> on Google · 42 reviews</span>
+        </div>
+        <h1 style="margin:0 0 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,5.2vw,74px);line-height:1.02;letter-spacing:-.025em;text-wrap:balance">Elevating luxury living through <span style="color:#C2643C">cutting-edge</span> architecture.</h1>
+        <p style="margin:0 0 32px;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#5A544C;max-width:520px">A Georgetown architecture &amp; construction consultancy with 18+ years of experience. From your first sketch to the finished build, you work with a team that listens.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:600;padding:16px 26px;border-radius:999px;background:#C2643C;color:#FBF8F3;box-shadow:0 8px 24px rgba(194,100,60,.28);transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(194,100,60,.38);color:#FBF8F3">Book a Consultation <span aria-hidden="true">→</span></a>
+          <a href="#projects" style="display:inline-flex;align-items:center;font-size:16px;font-weight:600;padding:16px 26px;border-radius:999px;background:#FFFFFF;border:1px solid rgba(36,33,29,.12);color:#24211D;transition:border-color .25s ease" style-hover="border-color:#C2643C;color:#C2643C">See our projects</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:36px;font-size:14px;color:#5A544C">
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#C2643C;display:block"></span>Residential &amp; commercial</span>
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#C2643C;display:block"></span>Led by Vickram</span>
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#C2643C;display:block"></span>Georgetown, Guyana</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto;gap:14px;min-height:420px">
+        <div style="grid-row:span 2;border-radius:24px;overflow:hidden;background:#EFE6D8;box-shadow:0 20px 50px rgba(36,33,29,.12)">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Modern residence" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4">
+        </div>
+        <div style="border-radius:24px;overflow:hidden;background:#EFE6D8;box-shadow:0 14px 36px rgba(36,33,29,.1)">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Warm interior" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1/1">
+        </div>
+        <div style="border-radius:24px;background:#24211D;color:#FBF8F3;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;box-shadow:0 14px 36px rgba(36,33,29,.16)">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(36px,4vw,56px);line-height:1;letter-spacing:-.03em">18<span style="color:#E8A33D">+</span></span>
+          <span style="font-size:14px;color:rgba(251,248,243,.75)">years designing &amp; building in Guyana</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" style="padding:clamp(56px,8vw,120px) clamp(20px,4vw,40px);background:#F4EEE4;scroll-margin-top:72px" data-screen-label="Services">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+        <div>
+          <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#C2643C">What we do</p>
+          <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.02em">Everything your project needs, under one roof.</h2>
+        </div>
+        <p style="margin:0;max-width:420px;font-size:16px;line-height:1.6;color:#5A544C">Seven services that carry you from an idea on paper to keys in hand.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px">
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="9" width="16" height="12" rx="1"/><path d="M2 10 12 3l10 7"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">Building Designs</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Homes and commercial spaces designed around the way you actually live and work.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M12 12v9M12 12 4 7.5M12 12l8-4.5"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">3D Concept Designs</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Walk through your building on screen before a single block is laid.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">Schematic Designs</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Early layouts that settle the big decisions — space, flow and budget — first.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><path d="M3 17 17 3l4 4L7 21H3z"/><path d="M14 6l4 4"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">Construction Drawings</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Clear, complete drawings your builder can price accurately and follow with confidence.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">As-Built Drawings</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">An accurate record of what was built — for approvals, renovations and resale.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><path d="M4 20c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M4 20 14 10"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">Landscape Designs</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Gardens, yards and outdoor rooms that make the most of Guyana's climate.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(36,33,29,.04);transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(36,33,29,.1)" data-reveal>
+          <span style="width:48px;height:48px;border-radius:14px;background:#FBEFE8;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2643C" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-6h6v6"/></svg></span>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em">Civil Engineering Consultancy</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5A544C">Structural and site engineering advice so your design is as sound as it is beautiful.</p>
+        </div>
+        <a href="#contact" style="background:#C2643C;color:#FBF8F3;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:200px;box-shadow:0 12px 30px rgba(194,100,60,.28);transition:transform .3s ease" style-hover="transform:translateY(-4px);color:#FBF8F3" data-reveal>
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;letter-spacing:-.01em;line-height:1.15">Not sure which service you need?</h3>
+          <span style="font-size:15px;font-weight:600">Book a consultation →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" style="padding:clamp(56px,8vw,120px) clamp(20px,4vw,40px);scroll-margin-top:72px" data-screen-label="Projects">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(32px,4vw,56px)" data-reveal>
+        <div>
+          <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#C2643C">Featured projects</p>
+          <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.02em">Recent work around Guyana</h2>
+        </div>
+        <a href="#contact" style="font-size:15px;font-weight:600;color:#C2643C;display:inline-flex;align-items:center;gap:8px" style-hover="gap:12px">Discuss your project →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+        <a href="#contact" style="display:flex;flex-direction:column;gap:16px;color:#24211D" data-reveal>
+          <div style="border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#EFE6D8;box-shadow:0 10px 30px rgba(36,33,29,.08)">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Tuschen Secondary School" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <h3 style="margin:0 0 4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em">Tuschen Secondary School</h3>
+              <p style="margin:0;font-size:14px;color:#5A544C">Tuschen, East Bank Essequibo</p>
+            </div>
+            <span style="font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#F4EEE4;color:#5A544C;white-space:nowrap">Education</span>
+          </div>
+        </a>
+        <a href="#contact" style="display:flex;flex-direction:column;gap:16px;color:#24211D" data-reveal>
+          <div style="border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#EFE6D8;box-shadow:0 10px 30px rgba(36,33,29,.08)">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Belco Shipping Office" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <h3 style="margin:0 0 4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em">Belco Shipping Office</h3>
+              <p style="margin:0;font-size:14px;color:#5A544C">South Road, Georgetown</p>
+            </div>
+            <span style="font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#F4EEE4;color:#5A544C;white-space:nowrap">Commercial</span>
+          </div>
+        </a>
+        <a href="#contact" style="display:flex;flex-direction:column;gap:16px;color:#24211D" data-reveal>
+          <div style="border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#EFE6D8;box-shadow:0 10px 30px rgba(36,33,29,.08)">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Outdoor Bar" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <h3 style="margin:0 0 4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.01em">Outdoor Bar</h3>
+              <p style="margin:0;font-size:14px;color:#5A544C">Sandy Babb Street, Kitty</p>
+            </div>
+            <span style="font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#F4EEE4;color:#5A544C;white-space:nowrap">Hospitality</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About + Stats -->
+  <section id="about" style="padding:0 clamp(20px,4vw,40px) clamp(56px,8vw,120px);scroll-margin-top:72px" data-screen-label="About">
+    <div style="max-width:1280px;margin:0 auto;background:#24211D;color:#FBF8F3;border-radius:32px;padding:clamp(36px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,72px);align-items:center;box-shadow:0 30px 70px rgba(36,33,29,.18)" data-reveal>
+      <div>
+        <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#E8A33D">Why families and businesses choose us</p>
+        <h2 style="margin:0 0 20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,48px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance">A team that feels like yours from the first meeting.</h2>
+        <p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:rgba(251,248,243,.78);max-width:520px">Led by Vickram, Elite Architecture brings a young, dynamic team and eighteen years of built work to every project. We explain the process in plain language, keep you in the loop, and stay with you from concept through construction.</p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:26px;height:26px;border-radius:50%;background:#C2643C;flex:0 0 26px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span><p style="margin:0;font-size:15px;line-height:1.55;color:rgba(251,248,243,.9)">Design, engineering consultancy and drawings from one team — no hand-offs.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:26px;height:26px;border-radius:50%;background:#C2643C;flex:0 0 26px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span><p style="margin:0;font-size:15px;line-height:1.55;color:rgba(251,248,243,.9)">Customer service our clients call unmatched — 4.9 stars on Google.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><span style="width:26px;height:26px;border-radius:50%;background:#C2643C;flex:0 0 26px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span><p style="margin:0;font-size:15px;line-height:1.55;color:rgba(251,248,243,.9)">Designs built for Guyana's climate, materials and approval process.</p></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
+        <div style="background:rgba(251,248,243,.06);border:1px solid rgba(251,248,243,.1);border-radius:20px;padding:24px">
+          <p style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-.03em">18<span style="color:#E8A33D">+</span></p>
+          <p style="margin:10px 0 0;font-size:14px;color:rgba(251,248,243,.7)">Years of experience</p>
+        </div>
+        <div style="background:rgba(251,248,243,.06);border:1px solid rgba(251,248,243,.1);border-radius:20px;padding:24px">
+          <p style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-.03em">42<span style="color:#E8A33D">+</span></p>
+          <p style="margin:10px 0 0;font-size:14px;color:rgba(251,248,243,.7)">Happy clients</p>
+        </div>
+        <div style="background:rgba(251,248,243,.06);border:1px solid rgba(251,248,243,.1);border-radius:20px;padding:24px">
+          <p style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-.03em">4.9<span style="color:#E8A33D;font-size:.45em;vertical-align:.6em">★</span></p>
+          <p style="margin:10px 0 0;font-size:14px;color:rgba(251,248,243,.7)">Google rating</p>
+        </div>
+        <div style="background:rgba(251,248,243,.06);border:1px solid rgba(251,248,243,.1);border-radius:20px;padding:24px">
+          <p style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,4.5vw,64px);line-height:1;letter-spacing:-.03em">7</p>
+          <p style="margin:10px 0 0;font-size:14px;color:rgba(251,248,243,.7)">Services in-house</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" style="padding:0 clamp(20px,4vw,40px) clamp(56px,8vw,120px);scroll-margin-top:72px" data-screen-label="Testimonials">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:clamp(32px,4vw,48px)" data-reveal>
+        <p style="margin:0 0 12px;font-size:14px;font-weight:600;color:#C2643C">What clients say</p>
+        <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.02em">Rated 4.9 out of 5 on Google</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px;align-items:stretch">
+        <div style="grid-column:span 1;background:#FFFFFF;border-radius:24px;padding:clamp(28px,3vw,40px);box-shadow:0 10px 30px rgba(36,33,29,.06);display:flex;flex-direction:column;gap:24px" data-reveal>
+          <span style="display:inline-flex;gap:3px;color:#E8A33D;font-size:18px;letter-spacing:.05em">★★★★★</span>
+          <blockquote style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(20px,1.9vw,27px);line-height:1.4;letter-spacing:-.01em;text-wrap:pretty">“Elite Architecture has a young, dynamic and competent team of professionals... their customer service is unmatched in the industry.”</blockquote>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:auto">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" alt="Susan Rodrigues" style="width:52px;height:52px;border-radius:50%;object-fit:cover">
+            <div><p style="margin:0;font-weight:600;font-size:15px">Susan Rodrigues</p><p style="margin:2px 0 0;font-size:13px;color:#5A544C">Google review</p></div>
+          </div>
+        </div>
+        <div style="background:#F4EEE4;border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:24px" data-reveal>
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="width:48px;height:48px;border-radius:14px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;color:#4285F4">G</span>
+            <div><p style="margin:0;font-weight:600;font-size:15px">Google Reviews</p><p style="margin:2px 0 0;font-size:13px;color:#5A544C">Verified client ratings</p></div>
+          </div>
+          <div>
+            <p style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(56px,6vw,88px);line-height:1;letter-spacing:-.03em">4.9</p>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:8px"><span style="color:#E8A33D;font-size:20px;letter-spacing:.05em">★★★★★</span><span style="font-size:15px;color:#5A544C">from 42 reviews</span></div>
+          </div>
+          <a href="https://www.google.com/search?q=Elite+Architecture+Georgetown+Guyana" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;background:#24211D;color:#FBF8F3;transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#FBF8F3">Read all reviews →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="padding:0 clamp(20px,4vw,40px) clamp(56px,8vw,120px);scroll-margin-top:72px" data-screen-label="CTA">
+    <div style="max-width:1280px;margin:0 auto;position:relative;overflow:hidden;border-radius:32px;background:#C2643C;color:#FBF8F3;box-shadow:0 30px 70px rgba(194,100,60,.28)" data-reveal>
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80" alt="" style="position:absolute;right:0;top:0;bottom:0;width:45%;height:100%;object-fit:cover;opacity:.35;mask-image:linear-gradient(90deg,transparent,black 60%);-webkit-mask-image:linear-gradient(90deg,transparent,black 60%)">
+      <div style="position:relative;padding:clamp(40px,6vw,88px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px">
+        <div style="max-width:560px">
+          <h2 style="margin:0 0 14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(32px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;text-wrap:balance">Ready to start? Let's talk about your project.</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(251,248,243,.85)">Book a first consultation — no drawings required. Just bring your ideas.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <a href="tel:+5926189518" style="display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:600;padding:16px 26px;border-radius:999px;background:#FBF8F3;color:#C2643C;box-shadow:0 8px 24px rgba(36,33,29,.18);transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#C2643C">Book a Consultation <span aria-hidden="true">→</span></a>
+          <a href="tel:+5926189518" style="font-size:15px;font-weight:500;color:#FBF8F3;padding-left:6px" style-hover="color:#FBF8F3;text-decoration:underline">Or call +592-618-9518</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:0 clamp(20px,4vw,40px) 28px" data-screen-label="Footer">
+  <div style="max-width:1280px;margin:0 auto;border-top:1px solid rgba(36,33,29,.1);padding-top:40px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;padding-bottom:32px">
+      <div>
+        <img src="../assets/logo-dark.png" alt="Elite Architecture" style="height:52px;width:auto;display:block;margin:0 0 20px">
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#5A544C;max-width:320px">Architecture &amp; construction consultancy in Georgetown, Guyana. Elevating luxury living through cutting-edge architecture.</p>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:500">
+        <a href="#services" style="color:#5A544C" style-hover="color:#C2643C">Services</a>
+        <a href="#projects" style="color:#5A544C" style-hover="color:#C2643C">Projects</a>
+        <a href="#about" style="color:#5A544C" style-hover="color:#C2643C">About</a>
+        <a href="#testimonials" style="color:#5A544C" style-hover="color:#C2643C">Reviews</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;color:#5A544C">
+        <a href="tel:+5926189518" style="font-weight:600;color:#24211D" style-hover="color:#C2643C">+592-618-9518</a>
+        <span>Georgetown, Guyana</span>
+        <a href="https://elitearchitecturegy.com" style-hover="color:#C2643C">elitearchitecturegy.com</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:20px;border-top:1px solid rgba(36,33,29,.08);font-size:13px;color:#5A544C">
+      <span>© 2026 Elite Architecture. All rights reserved.</span>
+      <span>Led by Vickram · 18+ years</span>
+    </div>
+  </div>
+</footer>
+
+<a href="../index.html" style="position:fixed;left:16px;bottom:16px;z-index:70;font-size:12px;font-weight:600;padding:10px 16px;background:#24211D;color:#FBF8F3;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.2)" style-hover="background:#C2643C;color:#FBF8F3">← Back to all demos</a>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#C2643C"/><text x="50" y="62" text-anchor="middle" font-family="Helvetica,sans-serif" font-weight="700" font-size="34" fill="#FBF8F3">EA</text></svg></template>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false, isMobile: false };
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 900px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches, menuOpen: false });
+    this.onMq();
+    this.mq.addEventListener('change', this.onMq);
+    this.seen = new WeakSet();
+    this.tries = 0;
+    this.poll = setInterval(() => { this.setupReveal(); if (++this.tries > 40) clearInterval(this.poll); }, 250);
+  }
+  componentWillUnmount() { this.mq && this.mq.removeEventListener('change', this.onMq); clearInterval(this.poll); }
+  setupReveal() {
+    if (!this.io) this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    const io = this.io;
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (this.seen.has(el)) return;
+      this.seen.add(el);
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+        io.observe(el);
+      }
+    });
+  }
+  renderVals() {
+    const { menuOpen, isMobile } = this.state;
+    return {
+      showDesktopNav: !isMobile,
+      showBurger: isMobile,
+      menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
