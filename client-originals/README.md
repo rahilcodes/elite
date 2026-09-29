@@ -4,6 +4,33 @@
 
 `team/vickram-paul.png`, `team/raza-jan.jpg`, `team/johanan-dolphin.jpg` — downloaded 2026-09-27 from the old Team page. Web copies: `site/assets/team/`.
 
+## Client logos
+
+Downloaded 2026-09-29 from the "Checkout Our Clients" section of the old home page. Web copies: `site/assets/clients/`.
+
+| # | Client | Original file | New site file |
+|---|---|---|---|
+| 1 | Nirva Super Convenience | `clients/01.png` | `nirva.png` |
+| 2 | Steve's Jewellery | `clients/02.png` | `steves-jewellery.png` |
+| 3 | Rose Ramdehol | `clients/03.png` | `rose-ramdehol.png` |
+| 4 | GuyGas | `clients/04.png` | `guygas.png` |
+| 5 | Raj Jewellery | `clients/05.png` | `raj-jewellery.png` |
+| 6 | BM Soat Auto Spares | `clients/06.png` | `bm-soat-auto-spares.png` |
+| 7 | GR Engineering Co. | `clients/07.png` | `gr-engineering.png` |
+| 8 | Action Invest Caribbean Inc. | `clients/08.png` | `action-invest-caribbean.png` |
+| 9 | Techlify | `clients/09.png` | `techlify.png` |
+| 10 | Impressions | `clients/10.png` | `impressions.png` |
+| 11 | B.M. Soat Auto Sales | `clients/11.png` | `bm-soat-auto-sales.png` |
+| 12 | Method4 Engineering | `clients/12.png` | `method4-engineering.png` |
+| 13 | Belco Eximport | `clients/13.png` | `belco-eximport.png` |
+| 14 | JOP SP | `clients/14.png` | `jop-sp.png` |
+| 15 | Giftland Mall | `clients/15.png` | `giftland-mall.png` |
+| 16 | The Beauty Box + Health | `clients/16.png` | `the-beauty-box.png` |
+| 17 | Bernie's Pharmacy | `clients/17.png` | `bernies-pharmacy.png` |
+| 18 | Fairfield Rice Inc. | `clients/18.png` | `fairfield-rice.png` |
+| 19 | Massy Finance Remittances | `clients/19.jpg` | `massy-finance.png` |
+| 20 | Regency Suites Hotel | `clients/20.png` | `regency-suites-hotel.png` |
+
 ## Project images
 
 Full-size project images downloaded on 2026-09-27 from the previous website

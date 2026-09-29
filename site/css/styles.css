@@ -502,6 +502,21 @@ a.service-card:hover h3 { color: var(--bronze-deep); }
 .reviews-card__row .stars { font-size: 16px; }
 .reviews-card__row span:last-child { font-size: var(--fs-small); color: var(--text-muted); }
 
+/* 10b. Client logos
+   ========================================================================== */
+.client-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap-tight); margin: 0; padding: 0; list-style: none; }
+.client-logo {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 8 / 5; padding: clamp(10px, 1.6vw, 24px);
+  background: #fff; border: 1px solid var(--line-soft); transition: border-color var(--t-fast), transform var(--t-fast);
+}
+.client-logo img { width: auto; height: auto; max-width: min(100%, 150px); max-height: 95px; object-fit: contain; filter: grayscale(1); opacity: .85; transition: filter .4s ease, opacity .4s ease; }
+.client-logo:hover { border-color: var(--bronze); transform: translateY(-3px); }
+.client-logo:hover img { filter: none; opacity: 1; }
+@media (hover: none) { .client-logo img { filter: none; opacity: 1; } }
+@media (max-width: 1023px) { .client-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .client-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } }
+@media (prefers-reduced-motion: reduce) { .client-logo:hover { transform: none; } }
+
 /* 11. CTA band
    ========================================================================== */
 .cta-band { position: relative; overflow: hidden; background: var(--ink); color: var(--on-dark); scroll-margin-top: var(--header-h); }

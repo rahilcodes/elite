@@ -198,6 +198,11 @@ brand / two link cells side by side / contact, and the title block becomes 2 x 2
 - **Mobile:** `.contact-bar`, a fixed bottom bar (Call / WhatsApp / Book) that slides in after 160px of scroll so the
   hero stays clean, and hides while the menu overlay is open.
 
+### Client logos — `.client-grid`
+White 8:5 tiles with a hairline border on a sand section; 5 columns on desktop, 4 on tablet, 3 on phones. Logos sit
+centred at their natural size (max 150 x 95), greyscale at rest and full colour on hover; on touch screens they are
+always in colour. White is used for the tile (the only pure white in the system) because most logos were drawn for it.
+
 ### Form fields (extension — not in the home design; used from the Contact page onward)
 Built from the same parts: uppercase 12px label (0.18em) above the field; field is transparent with
 a 1px 30%-ink border, square corners, 16px Jost text, 16px 18px padding, min-height 52px.

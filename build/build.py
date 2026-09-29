@@ -373,6 +373,31 @@ def pimg(p, n, alt, sizes=SIZES_CARD, root='', lazy=True):
             'width="800" height="450" alt="%s"%s decoding="async">') % (base, base, base, base, sizes, e(alt), extra)
 
 
+# Client logos migrated from the previous website: (file slug, client name, width, height)
+CLIENTS = [
+    ('nirva', 'Nirva Super Convenience', 150, 95),
+    ('steves-jewellery', "Steve's Jewellery", 150, 95),
+    ('rose-ramdehol', 'Rose Ramdehol', 150, 95),
+    ('guygas', 'GuyGas', 150, 95),
+    ('raj-jewellery', 'Raj Jewellery', 150, 95),
+    ('bm-soat-auto-spares', 'BM Soat Auto Spares', 150, 95),
+    ('gr-engineering', 'GR Engineering Co.', 150, 95),
+    ('action-invest-caribbean', 'Action Invest Caribbean Inc.', 150, 95),
+    ('techlify', 'Techlify', 150, 95),
+    ('impressions', 'Impressions', 150, 95),
+    ('bm-soat-auto-sales', 'B.M. Soat Auto Sales', 150, 95),
+    ('method4-engineering', 'Method4 Engineering', 150, 95),
+    ('belco-eximport', 'Belco Eximport', 150, 95),
+    ('jop-sp', 'JOP SP', 150, 95),
+    ('giftland-mall', 'Giftland Mall', 150, 95),
+    ('the-beauty-box', 'The Beauty Box + Health', 150, 95),
+    ('bernies-pharmacy', "Bernie's Pharmacy", 150, 95),
+    ('fairfield-rice', 'Fairfield Rice Inc.', 150, 95),
+    ('massy-finance', 'Massy Finance Remittances', 300, 144),
+    ('regency-suites-hotel', 'Regency Suites Hotel', 150, 95),
+]
+
+
 FAQS = [
     ('Why choose Elite Architecture?',
      'Because you get experience, creativity and care in one team. We have more than eighteen years of work behind us, we use current design technology, and we measure ourselves by whether you are satisfied. Our clients rate us 4.9 out of 5 on Google.'),
@@ -466,6 +491,29 @@ def build_home():
     a = main.index('<div class="grid-projects">')
     b = main.index('</div>\n    </div>\n  </section>', a)
     main = main[:a] + '<div class="grid-projects">\n' + cards + '\n      ' + main[b:]
+    logos = '\n'.join(
+        '        <li class="client-logo"><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
+        % (slug, w, h, e(name)) for slug, name, w, h in CLIENTS)
+    clients = '''  <!-- Clients -->
+  <section id="clients" class="section section--sand" aria-labelledby="clients-title">
+    <div class="container">
+      <div class="section-head section-head--tight" data-reveal>
+        <div>
+          <p class="eyebrow">Our clients</p>
+          <h2 id="clients-title">Trusted by businesses across Guyana.</h2>
+        </div>
+        <p class="section-head__aside">We value long relationships. These are some of the companies and people we have been proud to design for.</p>
+      </div>
+      <ul class="client-grid" data-reveal>
+%s
+      </ul>
+    </div>
+  </section>
+
+''' % logos
+    marker = '  <!-- Testimonials -->'
+    assert marker in main
+    main = main.replace(marker, clients + marker, 1)
     main = main.replace('<p class="stat__num">42<span>+</span></p>', '<p class="stat__num">100<span>+</span></p>')
     main = main.replace('Led by Vickram, Elite', 'Led by Vickram Paul, Elite')
     page('index.html',
