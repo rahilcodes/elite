@@ -203,6 +203,33 @@ White 8:5 tiles with a hairline border on a sand section; 5 columns on desktop, 
 centred at their natural size (max 150 x 95), greyscale at rest and full colour on hover; on touch screens they are
 always in colour. White is used for the tile (the only pure white in the system) because most logos were drawn for it.
 
+### Film & motion upgrade (October 2026)
+The client's 14 walkthrough films stream from their Google Drive folder; the site only holds a poster and a 4-second
+silent loop (animated WebP) per film, in `site/assets/films/`.
+
+| Piece | Class | Notes |
+|---|---|---|
+| Film hero (Home) | `.filmhero` | Replaces the split hero. Full-width film still with a slow zoom, dark scrim, drawing-sheet frame lines; fills exactly one screen. On desktop a 7-second silent loop fades in after the page has loaded. |
+| Film card | `.film-card` | 16:9 poster, play button, running time, film number, title, type tag. On desktop the loop plays on hover. |
+| Film reel (Home) | `.reel` | Dark section; sideways strip with sprocket edges, drag / scroll / arrow buttons. |
+| Films page | `.page--cinema`, `.film-feature`, `.film-grid` | Dark page: featured film, type filter, grid of all films. |
+| Cinema player | `.cinema` | Full-screen dialog holding Google Drive's embedded player; previous / next, arrow keys, Esc. |
+| Client marquee | `.client-marquee` | Two slow rows of logos moving in opposite directions; pauses on hover. |
+| Intro curtain | `.intro` | Home only, once per visit: a skyline draws itself, then the curtain lifts. |
+| Headline reveal | `.split-word` | Every page's h1 rises in word by word. |
+| Image wipe | `.wipe-*` | Photos and film posters open from the top as they scroll into view. |
+| Counters | — | Stat numbers count up when they come into view. |
+| Drawn footer | `.draw-*` | The footer elevation draws itself when reached. |
+| Stage line (Services) | `.features__rail` | A bronze line and nodes fill as you scroll through the seven services. |
+| Cursor | `.cursor` | Desktop only: an ivory disc reading "Play" over films and "View" over projects. |
+| Scroll progress | `.scroll-progress` | Bronze hairline under the header. |
+| Page transitions | `@view-transition` | Cross-page fade in browsers that support it. |
+
+New tokens: `--cinema` (#121110) and `--cinema-2` (#1C1B19) for the film sections. All motion is disabled under
+`prefers-reduced-motion`; the hero loop and hover loops are skipped on data-saver connections.
+
+Menu: Films replaced FAQ in the header; FAQ is now in the footer.
+
 ### Form fields (extension — not in the home design; used from the Contact page onward)
 Built from the same parts: uppercase 12px label (0.18em) above the field; field is transparent with
 a 1px 30%-ink border, square corners, 16px Jost text, 16px 18px padding, min-height 52px.

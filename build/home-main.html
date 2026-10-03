@@ -1,40 +1,29 @@
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero__grid">
+  <!-- Hero: film still + silent loop; the full films stream from Google Drive on demand -->
+  <section class="filmhero" aria-labelledby="hero-title" data-loop="assets/films/hero-loop.webp">
+    <div class="filmhero__media" aria-hidden="true">
+      <img class="filmhero__poster" src="assets/films/hero-poster-1280.webp" srcset="assets/films/hero-poster-800.webp 800w, assets/films/hero-poster-1280.webp 1280w" sizes="100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+    </div>
+    <div class="filmhero__frame" aria-hidden="true"></div>
+    <p class="filmhero__tag" aria-hidden="true"><i></i>Walkthrough film · Sheet A-01</p>
+    <div class="filmhero__inner">
       <div>
         <div class="rating-badge">
           <span class="stars" aria-hidden="true">★★★★★</span>
           <span><strong>4.9</strong> on Google · 42 reviews</span>
         </div>
         <h1 id="hero-title">Elevating luxury living through <em>cutting-edge</em> architecture.</h1>
-        <p class="lead">A Georgetown architecture &amp; construction consultancy with 18+ years of experience. From your first sketch to the finished build, you work with a team that listens.</p>
+        <p class="lead">A Georgetown architecture &amp; construction consultancy with 18+ years of experience. Walk through your building on film before a single block is laid.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="contact.html">Book a Consultation <span aria-hidden="true">→</span></a>
-          <a class="btn btn--outline" href="#projects">See our projects</a>
+          <a class="btn btn--light" href="contact.html">Book a Consultation <span aria-hidden="true">→</span></a>
+{{SHOWREEL}}
         </div>
-        <ul class="hero__points">
-          <li>Residential &amp; commercial</li>
-          <li>Led by Vickram</li>
-          <li>Georgetown, Guyana</li>
-        </ul>
       </div>
-      <div class="hero__collage">
-        <div class="hero__collage-tall">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=900&amp;q=75"
-               srcset="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=480&amp;q=75 480w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1200&amp;q=75 1200w"
-               sizes="(min-width: 900px) 27vw, 52vw"
-               width="900" height="1200" alt="Modern two-storey residence at dusk with timber screens and glazed living room" fetchpriority="high" decoding="async">
+      <div class="filmhero__aside">
+        <div class="filmhero__statwrap">
+          <p class="filmhero__stat">18<span>+</span></p>
+          <p class="filmhero__statlabel">Years designing &amp; building in Guyana</p>
         </div>
-        <div class="hero__collage-square">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=600&amp;h=600&amp;q=75"
-               srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=360&amp;h=360&amp;q=75 360w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=600&amp;h=600&amp;q=75 600w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=75 900w"
-               sizes="(min-width: 900px) 22vw, 42vw"
-               width="600" height="600" alt="Warm, sunlit living room interior" decoding="async">
-        </div>
-        <div class="stat-tile">
-          <span class="stat-tile__num">18<span>+</span></span>
-          <span class="stat-tile__label">Years designing &amp; building in Guyana</span>
-        </div>
+        <a class="filmhero__scroll" href="#services"><i aria-hidden="true"></i>Scroll</a>
       </div>
     </div>
   </section>

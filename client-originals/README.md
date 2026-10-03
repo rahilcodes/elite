@@ -4,6 +4,12 @@
 
 `team/vickram-paul.png`, `team/raza-jan.jpg`, `team/johanan-dolphin.jpg` — downloaded 2026-09-27 from the old Team page. Web copies: `site/assets/team/`.
 
+## Walkthrough films
+
+The 14 films are NOT stored here or on the site; they stream from the client's Google Drive folder
+(https://drive.google.com/drive/folders/1azk_HY7wd19PM5fjIpwYGkVMwAJ78fdZ). `films/NN-still.jpg` holds the one still
+taken from each film for its poster. Film titles, Drive IDs and running times are the `FILMS` list in `build/build.py`.
+
 ## Client logos
 
 Downloaded 2026-09-29 from the "Checkout Our Clients" section of the old home page. Web copies: `site/assets/clients/`.

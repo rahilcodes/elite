@@ -14,14 +14,14 @@ PHONE = '+592-618-9518'
 TEL = 'tel:+5926189518'
 WA = 'https://wa.me/5926189518'
 MAPS = 'https://www.google.com/maps/search/?api=1&amp;query=6.8221819%2C-58.1375138&amp;query_place_id=ChIJ03RHaZnvr40RdVLlgewALBc'
-MAP_EMBED = 'https://maps.google.com/maps?q=Elite%20Architecture%2C%205th%20%26%20Earl%27s%20Ave%2C%20Subryanville%2C%20Georgetown%2C%20Guyana&amp;ll=6.8221819,-58.1375138&amp;z=16&amp;output=embed'
+MAP_EMBED = 'https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m12!1m8!1m3!1d7923.1373402350919!2d-58.1375138!3d6.8221819!3m2!1i1024!2i768!4f13.1!2m1!1sElite+Architecture,+5th+%26+Earl%27s+Ave,+Subryanville,+Georgetown,+Guyana!6i16'
 EMAIL = 'info@elitearchitecturegy.com'
 STREET = "262 5th &amp; Earl's Avenue"
 AREA = 'Subryanville, Georgetown, Guyana'
 
-NAV = [('services.html', 'Services'), ('projects.html', 'Projects'), ('about.html', 'About'),
-       ('team.html', 'Team'), ('faq.html', 'FAQ'), ('contact.html', 'Contact')]
-FOOTER_EXTRA = [('careers.html', 'Careers')]
+NAV = [('services.html', 'Services'), ('projects.html', 'Projects'), ('films.html', 'Films'),
+       ('about.html', 'About'), ('team.html', 'Team'), ('contact.html', 'Contact')]
+FOOTER_EXTRA = [('faq.html', 'FAQ'), ('careers.html', 'Careers')]
 
 SIZES_CARD = '(min-width: 1040px) 30vw, (min-width: 700px) 45vw, 92vw'
 SIZES_SPLIT = '(min-width: 900px) 45vw, 92vw'
@@ -131,7 +131,8 @@ def nav_links(active, root):
                      for h, n in NAV)
 
 
-def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, noindex=False):
+def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, noindex=False,
+         body_class='', head_extra='', body_start=''):
     depth = path.count('/')
     root = '' if base else '../' * depth
     canonical = SITE + ('' if path == 'index.html' else path)
@@ -169,9 +170,9 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
 <link rel="stylesheet" href="{root}css/styles.css?v={ver}">
 
 {ld}
-</head>
-<body>
-<a class="skip-link" href="{self}#main">Skip to content</a>
+{head_extra}</head>
+<body{body_class}>
+{body_start}<a class="skip-link" href="{self}#main">Skip to content</a>
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -283,7 +284,8 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
 '''.format(base='<base href="/">\n' if base else '', title=e(title), desc=e(desc), canonical=canonical,
            robots='<meta name="robots" content="noindex">\n' if noindex else '',
            og_image=og_image, root=root, ld=ld_html, nav=nav_links(active, root), tel=TEL, phone=PHONE, wa=WA,
-           main=main, self=path if base else '', ver=VERSION, email=EMAIL, street=STREET, area=AREA,
+           main=main, self=path if base else '', ver=VERSION, head_extra=head_extra, body_start=body_start,
+           body_class=(' class="%s"' % body_class) if body_class else '', email=EMAIL, street=STREET, area=AREA,
            f1='\n'.join(footer_a(h, n) for h, n in NAV[:3]), f2='\n'.join(footer_a(h, n) for h, n in NAV[3:] + FOOTER_EXTRA))
     full = os.path.join(OUT, path.replace('/', os.sep))
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -398,6 +400,52 @@ CLIENTS = [
 ]
 
 
+# Walkthrough films. They stream from the client's Google Drive folder when a visitor presses play;
+# only a poster and a 4-second silent loop per film live in site/assets/films/.
+FILMS = [  # (file number, title, category, Drive file id, seconds) — display order
+    (10, 'Commercial Building II', 'Commercial', '1wyLUYH462CDvvP4AjXlrbhQ1a9AlIgiJ', 39),
+    (12, 'Two-Storey Residence III', 'Residential', '1cmIqZnE1Tsj_vZ8YGJ71epT4lqExggc_', 15),
+    (13, 'Commercial Building III', 'Commercial', '14O2zCmQWztgBEEKzxCFktAVJKYEXgUN_', 34),
+    (16, 'LPG Gas Bottling Facility', 'Industrial', '12t4FSBTiHv-hkCvMd2KYeaFdOI2xOtBX', 58),
+    (4, 'Three-Storey Residence', 'Residential', '1gT6QxFxcebPVP-eYosFhL1A2OciWwqE9', 90),
+    (8, 'Commercial Building I', 'Commercial', '1158HmygL4i82avZHgsh7hcw4aNJJ33Yo', 50),
+    (15, 'Truck Parking Facility', 'Industrial', '1b3rsxZm_hiGDlEj5hzzBQvVmhRguuQSt', 67),
+    (3, 'Fashion Boutique', 'Commercial', '1xvMX6HHYv-M1gRWOdDpFlETW0Owz3Y24', 20),
+    (11, 'Warehouse II', 'Industrial', '15Pnd4F-AgvFZBu7kpWH0nEZ7yVZN7jm9', 35),
+    (1, 'Two-Storey Residence I', 'Residential', '1R7jVtQqGFHjMSMP-XIQ9Lb9WFQxou7jV', 131),
+    (7, 'Office Rehabilitation', 'Commercial', '15t4Df7Vxf3DQpLcb9KgTEmnyEZ8zxZdL', 191),
+    (5, 'Warehouse I', 'Industrial', '1NuF7-dW0Z_KEBbZFAU4SUjSepNpugqmh', 30),
+    (2, 'Two-Storey Residence II', 'Residential', '1YyKyIFWxXg4ibGo5v6DdCO7wrwjB4lwh', 208),
+    (14, 'Two-Storey Residence IV', 'Residential', '1MMtgKqmIQdze8TF59t6XahO7YiTpW3cD', 302),
+]
+
+
+def film_attrs(f, root=''):
+    num, title, cat, fid, secs = f
+    return ('href="https://drive.google.com/file/d/%s/view" target="_blank" rel="noopener" data-film="%s" data-title="%s" '
+            'data-poster="%sassets/films/%02d-poster-1280.webp" data-loop="%sassets/films/%02d-loop.webp"'
+            % (fid, fid, e(title), root, num, root, num))
+
+
+def film_card(f, i, root='', extra='', sizes='(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 92vw'):
+    num, title, cat, fid, secs = f
+    base = '%sassets/films/%02d-poster' % (root, num)
+    return '''        <a class="film-card" %s data-category="%s" data-cursor="Play"%s>
+          <span class="film-card__media">
+            <img src="%s-640.webp" srcset="%s-640.webp 640w, %s-1280.webp 1280w" sizes="%s" width="640" height="360" alt="" loading="lazy" decoding="async">
+            <span class="film-card__play"><span class="play-glyph" aria-hidden="true"></span>Play film</span>
+            <span class="film-card__time">%d:%02d</span>
+          </span>
+          <span class="film-card__meta">
+            <span>
+              <span class="film-card__num">Film %02d</span>
+              <span class="film-card__title">%s</span>
+            </span>
+            <span class="tag">%s</span>
+          </span>
+        </a>''' % (film_attrs(f, root), cat.lower(), extra, base, base, base, sizes, secs // 60, secs % 60, i + 1, e(title), cat)
+
+
 FAQS = [
     ('Why choose Elite Architecture?',
      'Because you get experience, creativity and care in one team. We have more than eighteen years of work behind us, we use current design technology, and we measure ourselves by whether you are satisfied. Our clients rate us 4.9 out of 5 on Google.'),
@@ -457,7 +505,7 @@ def info_card(num, title, text):
 
 
 def project_card(p, root='', heading='h2'):
-    return '''        <a class="project-card" href="%sprojects/%s.html" data-category="%s" data-reveal>
+    return '''        <a class="project-card" href="%sprojects/%s.html" data-category="%s" data-cursor="View" data-reveal>
           <div class="project-card__media">%s</div>
           <div class="project-card__meta">
             <div>
@@ -485,6 +533,9 @@ def team_card(t, heading='h2', root=''):
         </article>''' % (media, heading, e(t['name']), heading, t['role'], t['bio'])
 
 
+INTRO_SVG = '<svg viewBox="0 0 520 150" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path pathLength="1" d="M0 140H520"/><path pathLength="1" d="M30 140V96l42-26 42 26v44"/><path pathLength="1" d="M140 140V70h110v70M132 70h126M140 104h110"/><path pathLength="1" d="M280 140V34h76v106M280 60h76M280 86h76M280 112h76M318 34v106"/><path pathLength="1" d="M378 140V54h44v86M389 54V36h22v18M400 36V8"/><path pathLength="1" d="M436 106l24-14h30l24 14M442 106v34M508 106v34M442 106h66"/></svg>'
+
+
 def build_home():
     main = io.open(os.path.join(ROOT, 'build', 'home-main.html'), encoding='utf-8').read()
     cards = '\n'.join(project_card(p, heading='h3') for p in PROJECTS[:3])
@@ -494,6 +545,18 @@ def build_home():
     logos = '\n'.join(
         '        <li class="client-logo"><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
         % (slug, w, h, e(name)) for slug, name, w, h in CLIENTS)
+    def logo_li(c, hidden=False):
+        slug, name, w, h = c
+        return ('          <li class="client-logo"%s><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
+                % (' aria-hidden="true"' if hidden else '', slug, w, h, '' if hidden else e(name)))
+
+    def marquee_row(items, rev=False):
+        return ('      <div class="client-marquee%s">\n        <ul class="client-marquee__track">\n%s\n%s\n        </ul>\n      </div>'
+                % (' client-marquee--rev' if rev else '', '\n'.join(logo_li(c) for c in items),
+                   '\n'.join(logo_li(c, True) for c in items)))
+
+    half = (len(CLIENTS) + 1) // 2
+    marquee = marquee_row(CLIENTS[:half]) + '\n' + marquee_row(CLIENTS[half:], True)
     clients = '''  <!-- Clients -->
   <section id="clients" class="section section--sand" aria-labelledby="clients-title">
     <div class="container">
@@ -504,22 +567,60 @@ def build_home():
         </div>
         <p class="section-head__aside">We value long relationships. These are some of the companies and people we have been proud to design for.</p>
       </div>
-      <ul class="client-grid" data-reveal>
 %s
-      </ul>
     </div>
   </section>
 
-''' % logos
+''' % marquee
     marker = '  <!-- Testimonials -->'
     assert marker in main
     main = main.replace(marker, clients + marker, 1)
+
+    showreel = ('          <a class="btn btn--play" %s data-cursor="Play"><span class="play-glyph" aria-hidden="true"></span>'
+                'Watch the showreel<span class="visually-hidden"> (film player)</span></a>' % film_attrs(FILMS[0]))
+    assert '{{SHOWREEL}}' in main
+    main = main.replace('{{SHOWREEL}}', showreel)
+
+    reel = '''  <!-- Film reel -->
+  <section id="films" class="section section--cinema on-dark" aria-labelledby="films-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Walkthrough films</p>
+          <h2 id="films-title">Walk through it before you build it.</h2>
+        </div>
+        <div class="reel__nav">
+          <button class="reel__btn" type="button" data-reel-prev aria-label="Previous films">←</button>
+          <button class="reel__btn" type="button" data-reel-next aria-label="Next films">→</button>
+        </div>
+      </div>
+      <div class="reel">
+        <div class="reel__track" tabindex="0" role="group" aria-label="Walkthrough films, scroll sideways">
+%s
+        </div>
+      </div>
+      <div class="reel__foot">
+        <p class="reel__hint">Drag or scroll sideways · %d films</p>
+        <a class="link-arrow" href="films.html">See every film →</a>
+      </div>
+    </div>
+  </section>
+
+''' % ('\n'.join(film_card(f, i, sizes='(min-width: 900px) 34vw, 80vw') for i, f in enumerate(FILMS[:8])), len(FILMS))
+    marker = '  <!-- About + stats -->'
+    assert marker in main
+    main = main.replace(marker, reel + marker, 1)
     main = main.replace('<p class="stat__num">42<span>+</span></p>', '<p class="stat__num">100<span>+</span></p>')
     main = main.replace('Led by Vickram, Elite', 'Led by Vickram Paul, Elite')
+    intro = ('<div class="intro" aria-hidden="true">%s<p class="intro__word">Elite <b>Architecture</b></p></div>\n' % INTRO_SVG)
+    intro_js = ('<script>try{if(!sessionStorage.getItem("ea-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)'
+                '{document.documentElement.classList.add("has-intro");sessionStorage.setItem("ea-intro","1")}}catch(e){}</script>\n'
+                '<link rel="preload" as="image" href="assets/films/hero-poster-1280.webp" imagesrcset="assets/films/hero-poster-800.webp 800w, assets/films/hero-poster-1280.webp 1280w" imagesizes="100vw">\n')
     page('index.html',
          'Elite Architecture | Architects in Georgetown, Guyana',
          'Georgetown architecture and construction consultancy with 18+ years of experience. Building designs, 3D concepts and construction drawings. Call +592-618-9518.',
-         main, ld=[business_ld()])
+         main, ld=[business_ld()], head_extra=intro_js, body_start=intro,
+         og_image=SITE + 'assets/films/hero-poster-1280.webp')
 
 
 def build_about():
@@ -661,7 +762,8 @@ def build_services():
   </section>
 
   <section class="section" aria-label="Services in detail">
-    <div class="container">
+    <div class="container features">
+      <div class="features__rail" aria-hidden="true"></div>
 ''' % '\n'.join(service_card(s, i + 1) for i, s in enumerate(SERVICES))
     for i, s in enumerate(SERVICES):
         main += '''      <article class="feature%s" id="%s" aria-labelledby="%s-title">
@@ -1047,6 +1149,56 @@ def build_careers():
          main, active='careers.html', ld=[crumbs_ld(crumbs)])
 
 
+def build_films():
+    crumbs = [('index.html', 'Home'), ('films.html', 'Films')]
+    main = page_hero(crumbs, 'Walkthrough films',
+                     'See the building <em>before</em> it exists.',
+                     '%d animated walkthroughs of homes, shops, offices and industrial sites we have designed. Press play and take the tour.' % len(FILMS))
+    main = main.replace('class="page-hero"', 'class="page-hero page-hero--dark on-dark"')
+    lead = FILMS[0]
+    count = lambda c: sum(1 for f in FILMS if f[2] == c)
+    feature_card = film_card(lead, 0, extra=' data-autoloop', sizes='(min-width: 900px) 60vw, 92vw').replace('loading="lazy"', 'fetchpriority="high"')
+    main += '''
+  <section class="section section--cinema section--after-hero on-dark" aria-label="Films">
+    <div class="container">
+      <div class="film-feature">
+%s
+        <div class="film-feature__copy" data-reveal>
+          <p class="eyebrow">Now showing</p>
+          <h2>%s</h2>
+          <p>A full exterior and interior tour, rendered from the same model the drawings come from. What you see is what gets built.</p>
+          <a class="btn btn--play" %s data-cursor="Play"><span class="play-glyph" aria-hidden="true"></span>Play film</a>
+        </div>
+      </div>
+      <div class="section-head section-head--tight" data-reveal>
+        <div>
+          <p class="eyebrow">The collection</p>
+          <h2>Every film</h2>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filter films by type" style="margin:0">
+          <button class="filter-btn" type="button" data-film-filter="all" aria-pressed="true">All <span>%d</span></button>
+          <button class="filter-btn" type="button" data-film-filter="residential" aria-pressed="false">Residential <span>%d</span></button>
+          <button class="filter-btn" type="button" data-film-filter="commercial" aria-pressed="false">Commercial <span>%d</span></button>
+          <button class="filter-btn" type="button" data-film-filter="industrial" aria-pressed="false">Industrial <span>%d</span></button>
+        </div>
+      </div>
+      <p class="visually-hidden" role="status" aria-live="polite" data-film-status></p>
+      <div class="film-grid" data-film-grid>
+%s
+      </div>
+      <p class="cinema-note">Films open in a player on this page. Each one opens in a new tab if the player is unavailable.</p>
+    </div>
+  </section>
+''' % (feature_card, e(lead[1]), film_attrs(lead), len(FILMS), count('Residential'), count('Commercial'), count('Industrial'),
+       '\n'.join(film_card(f, i).replace('<a class="film-card"', '<a class="film-card" data-reveal') for i, f in enumerate(FILMS)))
+    main = main.replace(' style="margin:0"', '')
+    main += cta(eyebrow='Your project on film', title='Want to walk through your own building? Let\'s talk.')
+    page('films.html', 'Walkthrough Films | Elite Architecture, Guyana',
+         'Watch 3D walkthrough films of homes, commercial buildings and industrial facilities designed by Elite Architecture in Guyana.',
+         main, active='films.html', ld=[crumbs_ld(crumbs)], body_class='page--cinema',
+         og_image=SITE + 'assets/films/%02d-poster-1280.webp' % lead[0])
+
+
 def build_404():
     main = '''  <section class="error-page" aria-labelledby="page-title">
     <div class="container">
@@ -1066,7 +1218,7 @@ def build_404():
 
 
 def build_seo_files():
-    urls = ['', 'about.html', 'services.html', 'projects.html', 'team.html', 'faq.html', 'contact.html', 'careers.html'] + \
+    urls = ['', 'about.html', 'services.html', 'projects.html', 'team.html', 'faq.html', 'contact.html', 'careers.html', 'films.html'] + \
            ['projects/%s.html' % p['slug'] for p in PROJECTS]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     xml += ''.join('  <url><loc>%s%s</loc></url>\n' % (SITE, x) for x in urls) + '</urlset>\n'
@@ -1086,5 +1238,6 @@ if __name__ == '__main__':
     build_faq()
     build_contact()
     build_careers()
+    build_films()
     build_404()
     build_seo_files()
