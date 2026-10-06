@@ -445,6 +445,8 @@ a.service-card:hover h3 { color: var(--bronze-deep); }
   padding-top: 16px; border-top: 1px solid var(--line);
 }
 .project-card h3 { margin-bottom: 6px; transition: color var(--t-fast); }
+.project-card__flag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: var(--fs-tag); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--bronze-deep); }
+.project-card__flag::before { content: ""; width: 14px; height: 1px; background: var(--bronze); }
 .project-card:hover h3 { color: var(--bronze-deep); }
 .project-card__place { font-size: var(--fs-small); color: var(--text-muted); }
 
@@ -920,7 +922,7 @@ div.service-card:hover { transform: none; border-color: var(--line-soft); }
 }
 .filmhero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .filmhero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.filmhero__poster { animation: kenburns 22s ease-in-out infinite alternate; transform-origin: 60% 40%; will-change: transform; }
+.filmhero__poster { animation: kenburns 12s ease-in-out infinite alternate; transform-origin: 60% 40%; will-change: transform; }
 .filmhero__loop { opacity: 0; transition: opacity 1.4s ease; }
 .filmhero.is-playing .filmhero__loop { opacity: 1; }
 .filmhero.is-playing .filmhero__poster { animation-play-state: paused; }
@@ -956,6 +958,7 @@ div.service-card:hover { transform: none; border-color: var(--line-soft); }
 
 .filmhero__aside { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; text-align: right; }
 @media (min-width: 828px) { .filmhero__aside { padding-bottom: 68px; } }
+@media (max-width: 827px) { .filmhero.is-playing .filmhero__poster { opacity: 0; } }
 .filmhero__stat { font-family: var(--font-display); font-weight: 300; font-size: clamp(54px, min(7vw, 12vh), 112px); line-height: .9; }
 .filmhero__stat span { color: var(--bronze-light); }
 .filmhero__statlabel { font-size: 11px; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: rgba(245, 242, 236, .75); max-width: 16em; line-height: 1.6; }

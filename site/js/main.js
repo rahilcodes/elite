@@ -126,7 +126,8 @@
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
 
       cards.forEach(function (card) {
-        var match = filter === 'all' || card.getAttribute('data-category') === filter;
+        var match = filter === 'all' || card.getAttribute('data-category') === filter ||
+          (filter === 'featured' && card.hasAttribute('data-featured'));
         card.hidden = !match;
         if (match) {
           shown++;
@@ -467,7 +468,7 @@
 
   /* Hero film: bring in the silent loop once the page has settled (desktop only) */
   var hero = document.querySelector('.filmhero');
-  if (hero && !reduce && !saveData && window.matchMedia('(min-width: 828px)').matches) {
+  if (hero && !reduce && !saveData) {
     var startHero = function () {
       var loop = new Image();
       loop.className = 'filmhero__loop';
@@ -477,7 +478,8 @@
         hero.querySelector('.filmhero__media').appendChild(loop);
         setTimeout(function () { hero.classList.add('is-playing'); }, 60);
       };
-      loop.src = hero.getAttribute('data-loop');
+      var phone = window.matchMedia('(max-width: 827px)').matches && hero.getAttribute('data-loop-mobile');
+      loop.src = phone || hero.getAttribute('data-loop');
     };
     var wait = introDelay ? 1200 : 400;
     if (document.readyState === 'complete') setTimeout(startHero, wait);
