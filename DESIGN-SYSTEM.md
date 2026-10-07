@@ -209,6 +209,7 @@ silent loop (animated WebP) per film, in `site/assets/films/`.
 
 | Piece | Class | Notes |
 |---|---|---|
+| Hero slideshow (Home) | `.hero-show` | Five client-chosen renders cross-fade with a slow zoom every 6.5 s; caption (number, project link, type · place), progress dots, arrows, swipe; pauses while hovering the controls. Replaced the film loop on 2026-10-07. |
 | Film hero (Home) | `.filmhero` | Replaces the split hero. Full-width film still with a slow zoom, dark scrim, drawing-sheet frame lines; fills exactly one screen. On desktop a 7-second silent loop fades in after the page has loaded. |
 | Film card | `.film-card` | 16:9 poster, play button, running time, film number, title, type tag. On desktop the loop plays on hover. |
 | Film reel (Home) | `.reel` | Dark section; sideways strip with sprocket edges, drag / scroll / arrow buttons. |

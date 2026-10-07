@@ -10,6 +10,8 @@ The 14 films are NOT stored here or on the site; they stream from the client's G
 (https://drive.google.com/drive/folders/1azk_HY7wd19PM5fjIpwYGkVMwAJ78fdZ). `films/NN-still.jpg` holds the one still
 taken from each film for its poster. Film titles, Drive IDs and running times are the `FILMS` list in `build/build.py`.
 
+Two further studio films (About page) stream from Drive: `1vYcY6Ajuid30r2LEZ1qHhaOrQ_TLsKnV` (Elite Video VS2) and `1knIEc1iatmYXwQRerL3iqLQOkL_om0PZ` (Elite Video 4K); stills in `films/about-*-still.jpg`.
+
 ## Client logos
 
 Downloaded 2026-09-29 from the "Checkout Our Clients" section of the old home page. Web copies: `site/assets/clients/`.

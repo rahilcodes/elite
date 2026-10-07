@@ -20,7 +20,7 @@ STREET = "262 5th &amp; Earl's Avenue"
 AREA = 'Subryanville, Georgetown, Guyana'
 
 NAV = [('services.html', 'Services'), ('projects.html', 'Projects'), ('films.html', 'Films'),
-       ('about.html', 'About'), ('team.html', 'Team'), ('contact.html', 'Contact')]
+       ('about.html', 'About'), ('team.html', 'Team'), ('clients.html', 'Clients'), ('contact.html', 'Contact')]
 FOOTER_EXTRA = [('faq.html', 'FAQ'), ('careers.html', 'Careers')]
 
 SIZES_CARD = '(min-width: 1040px) 30vw, (min-width: 700px) 45vw, 92vw'
@@ -62,9 +62,9 @@ def business_ld():
                     "addressLocality": "Georgetown", "addressCountry": "GY"},
         "geo": {"@type": "GeoCoordinates", "latitude": 6.8221819, "longitude": -58.1375138},
         "openingHoursSpecification": [
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-             "opens": "09:00", "closes": "22:00"},
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}],
+            {"@type": "OpeningHoursSpecification",
+             "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+             "opens": "09:00", "closes": "17:30"}],
         "founder": {"@type": "Person", "name": "Vickram Paul", "jobTitle": "CEO & Principal Architect"},
         "areaServed": {"@type": "Country", "name": "Guyana"},
         "contactPoint": {"@type": "ContactPoint", "telephone": PHONE, "email": EMAIL, "contactType": "customer service",
@@ -108,9 +108,9 @@ def page_hero(crumbs, eyebrow, h1, lead, root=''):
 
 def cta(root='', eyebrow='Start a project', title="Ready to start? Let's talk about your project.",
         text='Book a first consultation — no drawings required. Just bring your ideas.'):
-    bg = '1518005020951-eccb494ad742'
+    bg = '%sassets/projects/cummings-lodge-multipurpose-building/05' % root
     return '''  <section class="cta-band on-dark" aria-labelledby="cta-title">
-    <img class="cta-band__bg" src="%s" srcset="%s 800w, %s 1600w, %s 2400w" sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async">
+    <img class="cta-band__bg" src="%s-1600.webp" srcset="%s-480.webp 480w, %s-800.webp 800w, %s-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="" loading="lazy" decoding="async">
     <div class="cta-band__inner" data-reveal>
       <div class="cta-band__copy">
         <p class="eyebrow">%s</p>
@@ -123,7 +123,7 @@ def cta(root='', eyebrow='Start a project', title="Ready to start? Let's talk ab
       </div>
     </div>
   </section>
-''' % (u(bg, 1600, q=60), u(bg, 800, q=60), u(bg, 1600, q=60), u(bg, 2400, q=60), eyebrow, title, text, root, TEL, PHONE)
+''' % (bg, bg, bg, bg, eyebrow, title, text, root, TEL, PHONE)
 
 
 def nav_links(active, root):
@@ -136,7 +136,7 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
     depth = path.count('/')
     root = '' if base else '../' * depth
     canonical = SITE + ('' if path == 'index.html' else path)
-    og_image = og_image or u('1600585154340-be6161a56a0c', 1200, 630, 80)
+    og_image = og_image or SITE + 'assets/projects/demerara-estates-residence-1/05-1600.webp'
     ld_html = '\n'.join('<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False)
                         for x in ld)
     footer_a = lambda h, n: '        <a href="%s%s"%s>%s</a>' % (root, h, ' aria-current="page"' if h == active else '', n)
@@ -165,7 +165,6 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}css/styles.css?v={ver}">
 
@@ -245,7 +244,7 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
     </div>
     <dl class="footer-titleblock">
       <div><dt>Site</dt><dd>6.8222° N<br>58.1375° W</dd></div>
-      <div><dt>Hours</dt><dd>Mon–Fri 9am–10pm<br>Sat 11am–8pm</dd></div>
+      <div><dt>Hours</dt><dd>Sun–Fri 9am–5:30pm<br>Saturday closed</dd></div>
       <div><dt>Scale</dt><dd class="footer-scale"><span class="footer-scale__bar" aria-hidden="true"></span><span>1:1 with<br>your vision</span></dd></div>
       <div class="footer-titleblock__north"><dt>Drawn by</dt><dd>Vickram Paul<br>18+ years</dd>
         <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M20 8l6 20-6-5-6 5z"/><path d="M20 2v4"/></svg>
@@ -307,50 +306,50 @@ ICONS = {
 }
 
 SERVICES = [
-    dict(slug='building-designs', title='Building Designs', icon='building', img='1600596542815-ffad4c1539a9',
-         alt='Modern home exterior with clean lines and large windows',
+    dict(slug='building-designs', title='Building Designs', icon='building', project=('peters-hall-residence-3', 3),
+         alt='Two-storey residence with timber screens, designed by Elite Architecture',
          short='Homes and commercial spaces designed around the way you actually live and work.',
          long='Every building starts with how you want to live or work in it. We design homes, offices and public buildings that fit your plot, your budget and Guyana\'s climate — with layouts that make sense on day one and still work years from now.',
          benefits=['A design shaped around your routine, family or business', 'Natural light and cross-ventilation planned in from the start',
                    'Layouts that respect your budget and your plot', 'One team carrying the design through to construction drawings'],
          steps=['Consultation and site visit', 'Brief, budget and concept options', 'Design development with your feedback', 'Final design, ready for drawings and approval']),
-    dict(slug='3d-concept-designs', title='3D Concept Designs', icon='cube', img='1613490493576-7fde63acd811',
-         alt='Rendered view of a contemporary villa',
+    dict(slug='3d-concept-designs', title='3D Concept Designs', icon='cube', project=('demerara-estates-residence-2', 3),
+         alt='3D concept render of a modern residence',
          short='Walk through your building on screen before a single block is laid.',
          long='Plans can be hard to read. A 3D concept shows you exactly what you are getting — the shape of the building, the materials, the light in each room — so you can make changes while they are still free.',
          benefits=['See your building from every angle before you commit', 'Compare finishes, colours and roof forms side by side',
                    'Catch layout problems before they reach site', 'Images you can share with family, partners or lenders'],
          steps=['We model your approved layout', 'Materials and finishes are applied', 'You review exterior and interior views', 'Revisions, then final images']),
-    dict(slug='schematic-designs', title='Schematic Designs', icon='grid', img='1503387762-592deb58ef4e',
-         alt='Architect sketching a floor plan at a desk',
+    dict(slug='schematic-designs', title='Schematic Designs', icon='grid', project=('tuschen-secondary-school', 2),
+         alt='Aerial view of the Tuschen Secondary School site layout',
          short='Early layouts that settle the big decisions — space, flow and budget — first.',
          long='Schematic design is where the big questions are answered: how many rooms, how they connect, where the building sits on the land and roughly what it will cost. Getting this stage right saves time and money at every stage after it.',
          benefits=['Clear floor plans and site layout early on', 'Options to compare before you settle on one direction',
                    'An early sense of cost before detailed work begins', 'A firm base for 3D concepts and construction drawings'],
          steps=['Brief and site information gathered', 'Layout options sketched', 'Preferred option refined with you', 'Schematic set signed off']),
-    dict(slug='construction-drawings', title='Construction Drawings', icon='pencil', img='1541888946425-d81bb19240f5',
-         alt='Building under construction with scaffolding',
+    dict(slug='construction-drawings', title='Construction Drawings', icon='pencil', project=('east-bank-commercial-building-warehouses', 3),
+         alt='Front elevation of a commercial building on the East Bank',
          short='Clear, complete drawings your builder can price accurately and follow with confidence.',
          long='Good drawings protect you. Our construction sets give your contractor everything needed to price the job properly and build it as designed — plans, sections, elevations, details and schedules, coordinated and clearly labelled.',
          benefits=['Accurate contractor pricing with fewer surprises', 'Fewer questions and delays on site',
                    'Drawings prepared for the approval process', 'Details that protect the quality of the finished build'],
          steps=['Approved design is developed in detail', 'Structure and services coordinated', 'Full drawing set prepared and checked', 'Issued for approval, pricing and construction']),
-    dict(slug='as-built-drawings', title='As-Built Drawings', icon='sheet', img='1497366811353-6870744d04b2',
-         alt='Completed modern office interior',
+    dict(slug='as-built-drawings', title='As-Built Drawings', icon='sheet', project=('belco-shipping-office', 4),
+         alt='Belco Shipping Office as built',
          short='An accurate record of what was built — for approvals, renovations and resale.',
          long='If your building has no drawings, or the drawings no longer match what stands on site, we measure and document it as it is today. As-built drawings are often needed for approvals, financing, insurance, renovation or sale.',
          benefits=['A reliable record of your property as it stands', 'Supports applications, valuations and sales',
                    'A sound starting point for extensions and renovations', 'Digital files you can keep and reuse'],
          steps=['Site visit and measured survey', 'Existing building drawn up', 'Drawings checked against site', 'Final set issued in print and digital']),
-    dict(slug='landscape-designs', title='Landscape Designs', icon='leaf', img='1558904541-efa843a96f01',
-         alt='Landscaped garden with planting and pathway',
+    dict(slug='landscape-designs', title='Landscape Designs', icon='leaf', project=('demerara-estates-landscaping', 5),
+         alt='Landscaped courtyard with pool and planting at Demerara Estates',
          short="Gardens, yards and outdoor rooms that make the most of Guyana's climate.",
          long='Outdoor space is living space. We plan yards, gardens, driveways and outdoor rooms that handle heavy rain and strong sun, stay easy to maintain, and make the building feel finished.',
          benefits=['Shade, drainage and planting suited to local conditions', 'Outdoor areas that extend how you use your home',
                    'Driveways, paths and parking planned with the building', 'A more complete, more valuable property'],
          steps=['Site walk and wish list', 'Layout of hard and soft landscaping', 'Planting and material selection', 'Landscape plan ready for installation']),
-    dict(slug='civil-engineering-consultancy', title='Civil Engineering Consultancy', icon='structure', img='1504307651254-35680f356dfd',
-         alt='Engineer reviewing work on a construction site',
+    dict(slug='civil-engineering-consultancy', title='Civil Engineering Consultancy', icon='structure', project=('prospect-warehouse', 6),
+         alt='Prospect warehouse structure',
          short='Structural and site engineering advice so your design is as sound as it is beautiful.',
          long='A beautiful design still has to stand up, drain properly and sit safely on its ground. Our engineering consultancy works alongside the design team so structure, foundations and site works are considered from the beginning.',
          benefits=['Foundations and structure suited to your site', 'Drainage and site levels planned early',
@@ -420,16 +419,21 @@ FILMS = [  # (file number, title, category, Drive file id, seconds) — display 
 ]
 
 
+def film_key(num):
+    # Walkthrough films are numbered (01-16); other films (e.g. the studio films on About) use a name
+    return ('%02d' % num) if isinstance(num, int) else num
+
+
 def film_attrs(f, root=''):
     num, title, cat, fid, secs = f
     return ('href="https://drive.google.com/file/d/%s/view" target="_blank" rel="noopener" data-film="%s" data-title="%s" '
-            'data-poster="%sassets/films/%02d-poster-1280.webp" data-loop="%sassets/films/%02d-loop.webp"'
-            % (fid, fid, e(title), root, num, root, num))
+            'data-poster="%sassets/films/%s-poster-1280.webp" data-loop="%sassets/films/%s-loop.webp"'
+            % (fid, fid, e(title), root, film_key(num), root, film_key(num)))
 
 
-def film_card(f, i, root='', extra='', sizes='(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 92vw'):
+def film_card(f, i, root='', extra='', sizes='(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 92vw', label='Film %02d'):
     num, title, cat, fid, secs = f
-    base = '%sassets/films/%02d-poster' % (root, num)
+    base = '%sassets/films/%s-poster' % (root, film_key(num))
     return '''        <a class="film-card" %s data-category="%s" data-cursor="Play"%s>
           <span class="film-card__media">
             <img src="%s-640.webp" srcset="%s-640.webp 640w, %s-1280.webp 1280w" sizes="%s" width="640" height="360" alt="" loading="lazy" decoding="async">
@@ -438,12 +442,19 @@ def film_card(f, i, root='', extra='', sizes='(min-width: 1100px) 30vw, (min-wid
           </span>
           <span class="film-card__meta">
             <span>
-              <span class="film-card__num">Film %02d</span>
+              <span class="film-card__num">%s</span>
               <span class="film-card__title">%s</span>
             </span>
             <span class="tag">%s</span>
           </span>
-        </a>''' % (film_attrs(f, root), cat.lower(), extra, base, base, base, sizes, secs // 60, secs % 60, i + 1, e(title), cat)
+        </a>''' % (film_attrs(f, root), cat.lower(), extra, base, base, base, sizes, secs // 60, secs % 60, label % (i + 1) if '%' in label else label, e(title), cat)
+
+
+# The two studio films the client asked to show on the About page (stream from Drive on play)
+ABOUT_FILMS = [
+    ('about-story', 'Inside Elite Architecture', 'Studio film', '1vYcY6Ajuid30r2LEZ1qHhaOrQ_TLsKnV', 52),
+    ('about-promo', 'What we do, in 45 seconds', 'Brand film', '1knIEc1iatmYXwQRerL3iqLQOkL_om0PZ', 45),
+]
 
 
 FAQS = [
@@ -504,6 +515,11 @@ def info_card(num, title, text):
         </div>''' % (num, title, text)
 
 
+# Home hero slideshow: the renders the client asked to lead with (project slug, image number)
+HERO_SLIDES = [('demerara-estates-residence-1', 5), ('demerara-estates-residence-2', 1),
+               ('east-bank-commercial-building-warehouses', 1), ('east-bank-demerara-residence', 4),
+               ('mon-repos-apartments', 5)]
+
 # The client's highlighted work, in the order it is shown on the home page
 HOME_FEATURED = ['cummings-lodge-multipurpose-building', 'demerara-estates-residence-1', 'peters-hall-residence-3',
                  'floral-park-residence', 'demerara-estates-residence-2', 'earls-court-apartments']
@@ -554,50 +570,28 @@ def team_card(t, heading='h2', root=''):
 INTRO_SVG = '<svg viewBox="0 0 520 150" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path pathLength="1" d="M0 140H520"/><path pathLength="1" d="M30 140V96l42-26 42 26v44"/><path pathLength="1" d="M140 140V70h110v70M132 70h126M140 104h110"/><path pathLength="1" d="M280 140V34h76v106M280 60h76M280 86h76M280 112h76M318 34v106"/><path pathLength="1" d="M378 140V54h44v86M389 54V36h22v18M400 36V8"/><path pathLength="1" d="M436 106l24-14h30l24 14M442 106v34M508 106v34M442 106h66"/></svg>'
 
 
+HERO_FIRST = 'assets/projects/%s/%02d' % HERO_SLIDES[0]
+
+
 def build_home():
     main = io.open(os.path.join(ROOT, 'build', 'home-main.html'), encoding='utf-8').read()
     cards = '\n'.join(project_card(by_slug(s), heading='h3') for s in HOME_FEATURED)
     a = main.index('<div class="grid-projects">')
     b = main.index('</div>\n    </div>\n  </section>', a)
     main = main[:a] + '<div class="grid-projects">\n' + cards + '\n      ' + main[b:]
-    logos = '\n'.join(
-        '        <li class="client-logo"><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
-        % (slug, w, h, e(name)) for slug, name, w, h in CLIENTS)
-    def logo_li(c, hidden=False):
-        slug, name, w, h = c
-        return ('          <li class="client-logo"%s><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
-                % (' aria-hidden="true"' if hidden else '', slug, w, h, '' if hidden else e(name)))
 
-    def marquee_row(items, rev=False):
-        return ('      <div class="client-marquee%s">\n        <ul class="client-marquee__track">\n%s\n%s\n        </ul>\n      </div>'
-                % (' client-marquee--rev' if rev else '', '\n'.join(logo_li(c) for c in items),
-                   '\n'.join(logo_li(c, True) for c in items)))
-
-    half = (len(CLIENTS) + 1) // 2
-    marquee = marquee_row(CLIENTS[:half]) + '\n' + marquee_row(CLIENTS[half:], True)
-    clients = '''  <!-- Clients -->
-  <section id="clients" class="section section--sand" aria-labelledby="clients-title">
-    <div class="container">
-      <div class="section-head section-head--tight" data-reveal>
-        <div>
-          <p class="eyebrow">Our clients</p>
-          <h2 id="clients-title">Trusted by businesses across Guyana.</h2>
-        </div>
-        <p class="section-head__aside">We value long relationships. These are some of the companies and people we have been proud to design for.</p>
-      </div>
-%s
-    </div>
-  </section>
-
-''' % marquee
-    marker = '  <!-- Testimonials -->'
-    assert marker in main
-    main = main.replace(marker, clients + marker, 1)
-
-    showreel = ('          <a class="btn btn--play" %s data-cursor="Play"><span class="play-glyph" aria-hidden="true"></span>'
-                'Watch the showreel<span class="visually-hidden"> (film player)</span></a>' % film_attrs(FILMS[0]))
-    assert '{{SHOWREEL}}' in main
-    main = main.replace('{{SHOWREEL}}', showreel)
+    slides, dots = [], []
+    for k, (slug, n) in enumerate(HERO_SLIDES):
+        p = by_slug(slug)
+        base = 'assets/projects/%s/%02d' % (slug, n)
+        slides.append(('      <img class="hero-slide%s" src="%s-1600.webp" srcset="%s-480.webp 480w, %s-800.webp 800w, %s-1600.webp 1600w" '
+                       'sizes="100vw" width="1600" height="900" alt="" %s decoding="async" data-title="%s" data-href="projects/%s.html" data-meta="%s · %s">')
+                      % (' is-active' if k == 0 else '', base, base, base, base,
+                         'fetchpriority="high"' if k == 0 else 'loading="lazy"', e(p['title']), slug, p['cat'], e(p['place'])))
+        dots.append('              <button class="hero-dot%s" type="button" role="tab" aria-selected="%s" aria-label="Project %d: %s" data-slide-to="%d"></button>'
+                    % (' is-active' if k == 0 else '', 'true' if k == 0 else 'false', k + 1, e(p['title']), k))
+    main = main.replace('{{HERO_SLIDES}}', '\n'.join(slides)).replace('{{HERO_DOTS}}', '\n'.join(dots))
+    main = main.replace('{{HERO_COUNT}}', '%02d' % len(HERO_SLIDES))
 
     reel = '''  <!-- Film reel -->
   <section id="films" class="section section--cinema on-dark" aria-labelledby="films-title">
@@ -628,17 +622,19 @@ def build_home():
     marker = '  <!-- About + stats -->'
     assert marker in main
     main = main.replace(marker, reel + marker, 1)
+    assert 'client-marquee' not in main
     main = main.replace('<p class="stat__num">42<span>+</span></p>', '<p class="stat__num">100<span>+</span></p>')
     main = main.replace('Led by Vickram, Elite', 'Led by Vickram Paul, Elite')
     intro = ('<div class="intro" aria-hidden="true">%s<p class="intro__word">Elite <b>Architecture</b></p></div>\n' % INTRO_SVG)
     intro_js = ('<script>try{if(!sessionStorage.getItem("ea-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)'
                 '{document.documentElement.classList.add("has-intro");sessionStorage.setItem("ea-intro","1")}}catch(e){}</script>\n'
-                '<link rel="preload" as="image" href="assets/films/hero-poster-1280.webp" imagesrcset="assets/films/hero-poster-800.webp 800w, assets/films/hero-poster-1280.webp 1280w" imagesizes="100vw">\n')
+                '<link rel="preload" as="image" href="%s-1600.webp" imagesrcset="%s-480.webp 480w, %s-800.webp 800w, %s-1600.webp 1600w" imagesizes="100vw">\n'
+                % ((HERO_FIRST,) * 4))
     page('index.html',
          'Elite Architecture | Architects in Georgetown, Guyana',
          'Georgetown architecture and construction consultancy with 18+ years of experience. Building designs, 3D concepts and construction drawings. Call +592-618-9518.',
          main, ld=[business_ld()], head_extra=intro_js, body_start=intro,
-         og_image=SITE + 'assets/films/hero-poster-1280.webp')
+         og_image=SITE + HERO_FIRST + '-1600.webp')
 
 
 def build_about():
@@ -650,8 +646,25 @@ def build_about():
     main = page_hero(crumbs, 'About the studio',
                      'Eighteen years of turning ideas into <em>buildings</em>.',
                      'Elite Architecture is an architecture and construction consultancy based in Georgetown, Guyana. We design homes, workplaces and public buildings — and stay with our clients until they are built.')
+    story, promo = ABOUT_FILMS
     main += '''
-  <section class="section section--after-hero" aria-labelledby="story-title">
+  <section class="section section--after-hero section--cinema on-dark" aria-labelledby="onfilm-title">
+    <div class="container">
+      <div class="film-feature about-films">
+%s
+        <div class="film-feature__copy" data-reveal>
+          <p class="eyebrow">On film</p>
+          <h2 id="onfilm-title">Meet the studio before you meet us.</h2>
+          <p>Two short films: a walk through our work with the team, and a quick tour of everything we do. Press play on either.</p>
+%s
+        </div>
+      </div>
+    </div>
+  </section>
+''' % (film_card(story, 0, extra=' data-autoloop', sizes='(min-width: 900px) 60vw, 92vw').replace('loading="lazy"', 'fetchpriority="high"'),
+       film_card(promo, 1, sizes='(min-width: 900px) 32vw, 92vw'))
+    main += '''
+  <section class="section" aria-labelledby="story-title">
     <div class="container grid-split">
       <div class="media media--4x3" data-reveal>%s</div>
       <div class="prose" data-reveal>
@@ -742,7 +755,7 @@ def build_about():
       </div>
     </div>
   </section>
-''' % (img('1503387762-592deb58ef4e', 'Architectural plans being drawn by hand', (4, 3), SIZES_SPLIT, lazy=False),
+''' % (pimg(by_slug('demerara-estates-residence-2'), 2, 'Aerial view of a Demerara Estates residence designed by the studio', SIZES_SPLIT, lazy=False),
        info_card('Mission', 'On time, on budget, beyond expectations', 'To deliver projects that arrive on schedule, respect the budget and use sustainable building practices that reduce our impact on the environment.'),
        info_card('Vision', 'Buildings that give back', 'A future where every building combines innovation, sustainability and human connection, and adds something good to the community around it.'),
        info_card('Process', 'Open and collaborative', 'A transparent design process built on your input. We listen, communicate openly and turn what you have in mind into drawings you can build from.'),
@@ -807,7 +820,7 @@ def build_services():
           <a class="btn btn--outline" href="contact.html">Discuss %s <span aria-hidden="true">→</span></a>
         </div>
       </article>
-''' % (' feature--flip' if i % 2 else '', s['slug'], s['slug'], img(s['img'], s['alt'], (4, 3), SIZES_SPLIT),
+''' % (' feature--flip' if i % 2 else '', s['slug'], s['slug'], pimg(by_slug(s['project'][0]), s['project'][1], s['alt'], SIZES_SPLIT),
        i + 1, s['slug'], s['title'], s['long'],
        '\n'.join('                <li>%s</li>' % b for b in s['benefits']),
        '\n'.join('                <li>%s</li>' % b for b in s['steps']),
@@ -841,7 +854,7 @@ def build_services():
     ld = [business_ld(), crumbs_ld(crumbs)]
     page('services.html', 'Architecture Services in Guyana | Elite Architecture',
          'Building designs, 3D concepts, construction and as-built drawings, landscape design and civil engineering consultancy in Georgetown, Guyana.',
-         main, active='services.html', ld=ld, og_image=u(SERVICES[0]['img'], 1200, 630, 80))
+         main, active='services.html', ld=ld, og_image=SITE + 'assets/projects/%s/%02d-1600.webp' % SERVICES[0]['project'])
 
 
 def build_projects():
@@ -1098,7 +1111,7 @@ def build_contact():
           <div><dt>WhatsApp</dt><dd><a href="%s" target="_blank" rel="noopener">Message us on WhatsApp<span class="visually-hidden"> (opens in a new tab)</span></a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:%s">%s</a></dd></div>
           <div><dt>Address</dt><dd><address class="plain-address">%s<br>%s</address></dd></div>
-          <div><dt>Hours</dt><dd><div class="hours"><span>Monday – Friday</span><span>9:00 am – 10:00 pm</span><span>Saturday</span><span>11:00 am – 8:00 pm</span><span>Sunday</span><span>Closed</span></div></dd></div>
+          <div><dt>Hours</dt><dd><div class="hours"><span>Sunday – Friday</span><span>9:00 am – 5:30 pm</span><span>Saturday</span><span>Closed</span></div></dd></div>
         </dl>
       </div>
     </div>
@@ -1218,6 +1231,64 @@ def build_films():
          og_image=SITE + 'assets/films/%02d-poster-1280.webp' % lead[0])
 
 
+def build_clients():
+    crumbs = [('index.html', 'Home'), ('clients.html', 'Clients')]
+    main = page_hero(crumbs, 'Our clients',
+                     'Trusted by businesses <em>across Guyana</em>.',
+                     'From family homes to shops, offices and industrial sites, these are some of the companies and people who have trusted Elite Architecture with their buildings.')
+    logos = '\n'.join('        <li class="client-logo" data-reveal><img src="assets/clients/%s.png" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"></li>'
+                      % (slug, w, h, e(name)) for slug, name, w, h in CLIENTS)
+    main += '''
+  <section class="section section--after-hero" aria-labelledby="logos-title">
+    <div class="container">
+      <div class="section-head section-head--tight" data-reveal>
+        <div>
+          <p class="eyebrow">%d clients and counting</p>
+          <h2 id="logos-title">The names behind our work.</h2>
+        </div>
+        <p class="section-head__aside">We value long relationships, and many of these clients have come back to us for their next project.</p>
+      </div>
+      <ul class="client-grid">
+%s
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="words-title">
+    <div class="container">
+      <div class="section-head section-head--tight" data-reveal>
+        <div>
+          <p class="eyebrow">In their words</p>
+          <h2 id="words-title">Rated 4.9 out of 5 on Google.</h2>
+        </div>
+        <a class="link-arrow" href="https://www.google.com/search?q=Elite+Architecture+Georgetown+Guyana" target="_blank" rel="noopener">Read all Google reviews →<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+      <div class="grid-projects">
+        <figure class="quote-card quote-card--ivory" data-reveal>
+          <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote class="quote-card__sm">“Their customer service is unmatched in the industry.”</blockquote>
+          <figcaption class="quote-card__author"><span class="avatar" aria-hidden="true">SR</span><div><p class="label">Susan Rodrigues</p><p class="caption">Google review</p></div></figcaption>
+        </figure>
+        <figure class="quote-card quote-card--ivory" data-reveal>
+          <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote class="quote-card__sm">“Vickram is very dependable, easy to communicate with, and is always willing to put in extra effort.”</blockquote>
+          <figcaption class="quote-card__author"><span class="avatar" aria-hidden="true">JK</span><div><p class="label">Joshua Kissoon</p><p class="caption">Google review</p></div></figcaption>
+        </figure>
+        <figure class="quote-card quote-card--ivory" data-reveal>
+          <span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote class="quote-card__sm">“The team displayed a high level of professionalism.”</blockquote>
+          <figcaption class="quote-card__author"><span class="avatar" aria-hidden="true">NP</span><div><p class="label">Nome Persaud</p><p class="caption">Google review</p></div></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+''' % (len(CLIENTS), logos)
+    main += cta(eyebrow='Join them', title='Add your name to the list. Book a consultation.')
+    page('clients.html', 'Our Clients | Elite Architecture, Georgetown',
+         'The businesses and people who have trusted Elite Architecture with their buildings across Guyana, from homes to offices and industrial sites.',
+         main, active='clients.html', ld=[crumbs_ld(crumbs)])
+
+
 def build_404():
     main = '''  <section class="error-page" aria-labelledby="page-title">
     <div class="container">
@@ -1237,7 +1308,7 @@ def build_404():
 
 
 def build_seo_files():
-    urls = ['', 'about.html', 'services.html', 'projects.html', 'team.html', 'faq.html', 'contact.html', 'careers.html', 'films.html'] + \
+    urls = ['', 'about.html', 'services.html', 'projects.html', 'team.html', 'faq.html', 'contact.html', 'careers.html', 'films.html', 'clients.html'] + \
            ['projects/%s.html' % p['slug'] for p in PROJECTS]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     xml += ''.join('  <url><loc>%s%s</loc></url>\n' % (SITE, x) for x in urls) + '</urlset>\n'
@@ -1258,5 +1329,6 @@ if __name__ == '__main__':
     build_contact()
     build_careers()
     build_films()
+    build_clients()
     build_404()
     build_seo_files()

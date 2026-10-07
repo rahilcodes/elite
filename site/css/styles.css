@@ -225,7 +225,7 @@ strong { font-weight: 500; }
 .site-logo { display: flex; align-items: center; min-height: 44px; }
 .site-logo img { height: clamp(34px, 4vw, 46px); width: auto; }
 
-.site-nav { display: flex; gap: clamp(20px, 2.2vw, 32px); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; }
+.site-nav { display: flex; gap: clamp(16px, 1.9vw, 30px); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; }
 .site-nav a { display: inline-flex; align-items: center; min-height: 44px; position: relative; }
 .site-nav a::after {
   content: ""; position: absolute; left: 0; right: .18em; bottom: 9px; height: 1px;
@@ -277,7 +277,8 @@ strong { font-weight: 500; }
 @media (max-width: 1279px) {
   .site-header__phone { display: none; }
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279px) { .site-nav { letter-spacing: .14em; } }
+@media (max-width: 1139px) {
   .site-nav, .site-header__actions { display: none; }
   .burger { display: flex; }
 }
@@ -522,7 +523,7 @@ a.service-card:hover h3 { color: var(--bronze-deep); }
 /* 11. CTA band
    ========================================================================== */
 .cta-band { position: relative; overflow: hidden; background: var(--ink); color: var(--on-dark); scroll-margin-top: var(--header-h); }
-.cta-band__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; }
+.cta-band__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; object-position: 50% 40%; }
 /* Readability scrim: keeps the design's image look, guarantees AA for text */
 .cta-band::after {
   content: ""; position: absolute; inset: 0;
@@ -981,8 +982,54 @@ div.service-card:hover { transform: none; border-color: var(--line-soft); }
   .filmhero__tag { right: auto; left: calc(var(--gutter) + 6px); top: 24px; }
   .filmhero::before { background: linear-gradient(180deg, rgba(18, 17, 16, .5) 0%, rgba(18, 17, 16, .15) 24%, rgba(18, 17, 16, .7) 56%, rgba(18, 17, 16, .96) 100%); }
 }
-@media (max-width: 599px) and (max-height: 640px) {
+/* Phones: keep the whole hero on one screen */
+@media (max-width: 599px) and (max-height: 739px) {
   .filmhero .lead { display: none; }
+  .hero-caption__meta { display: none; }
+  .hero-caption { gap: 2px; }
+}
+@media (max-width: 599px) and (max-height: 640px) {
+  .filmhero .btn--play { display: none; }
+  .hero-caption__title a { font-size: 18px; }
+  .filmhero .rating-badge { margin-bottom: 10px; }
+}
+
+/* ---- Hero slideshow ------------------------------------------------------ */
+.hero-slide { opacity: 0; transition: opacity 1.4s ease; transform-origin: 50% 55%; }
+.hero-slide.is-active { opacity: 1; animation: heroZoom var(--zoom-ms, 8000ms) ease-out forwards; }
+.hero-slide:nth-child(even).is-active { transform-origin: 40% 40%; }
+.hero-show .filmhero__poster { display: none; }
+@keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+.hero-caption { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; text-align: right; }
+.hero-caption__num { font-size: 11px; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--bronze-light); }
+.hero-caption__title a { font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 2.1vw, 32px); line-height: 1.15; color: var(--on-dark); border-bottom: 1px solid var(--bronze-light); padding-bottom: 2px; }
+.hero-caption__title a:hover { color: var(--bronze-light); }
+.hero-caption__meta { font-size: var(--fs-caption); letter-spacing: .04em; color: rgba(245, 242, 236, .75); }
+.hero-caption__nav { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+.hero-arrow { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(245, 242, 236, .4); color: var(--on-dark); font-size: 16px; cursor: pointer; transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast); }
+.hero-arrow:hover { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+.hero-dots { display: flex; gap: 4px; }
+.hero-dot { position: relative; width: 30px; height: 44px; padding: 0; background: none; border: 0; cursor: pointer; }
+.hero-dot::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: rgba(245, 242, 236, .3); }
+.hero-dot::after { content: ""; position: absolute; left: 0; top: 50%; height: 2px; width: 0; background: var(--bronze-light); }
+.hero-dot.is-active::after { animation: dotFill var(--slide-ms, 6500ms) linear forwards; }
+.hero-dot:hover::before { background: rgba(245, 242, 236, .6); }
+.hero-show.is-paused .hero-dot.is-active::after, .hero-show.is-paused .hero-slide.is-active { animation-play-state: paused; }
+@keyframes dotFill { to { width: 100%; } }
+
+@media (max-width: 827px) {
+  .hero-caption { align-items: flex-start; text-align: left; width: 100%; gap: 4px; }
+  .hero-caption__title a { font-size: clamp(20px, 5.6vw, 26px); }
+  .hero-caption__nav { width: 100%; justify-content: space-between; margin-top: 2px; }
+  .hero-dots { flex: 1; justify-content: center; }
+  .hero-dot { width: 24px; }
+  .hero-show .filmhero__statwrap { display: none; }
+  .hero-show .filmhero__aside { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active { animation: none; }
+  .hero-dot.is-active::after { animation: none; width: 100%; }
 }
 
 /* ---- Film cards ---------------------------------------------------------- */
@@ -1046,6 +1093,9 @@ div.service-card:hover { transform: none; border-color: var(--line-soft); }
 .film-feature__copy h2 { margin: 14px 0 18px; }
 .film-feature__copy p { color: var(--on-dark-body); margin-bottom: 28px; max-width: 420px; }
 .film-feature .film-card { gap: 0; }
+.about-films { align-items: start; }
+.about-films .film-feature__copy .film-card { margin-top: 32px; gap: 14px; }
+.about-films .film-feature__copy p:not(.eyebrow) { margin-bottom: 0; }
 .film-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: clamp(32px, 3.4vw, 52px) var(--gap-cards); }
 @media (max-width: 899px) { .film-feature { grid-template-columns: minmax(0, 1fr); } }
 .cinema-note { margin-top: var(--head-gap); font-size: var(--fs-caption); color: rgba(245, 242, 236, .6); }

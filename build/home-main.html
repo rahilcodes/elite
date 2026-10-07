@@ -1,10 +1,10 @@
-  <!-- Hero: film still + silent loop; the full films stream from Google Drive on demand -->
-  <section class="filmhero" aria-labelledby="hero-title" data-loop="assets/films/hero-loop.webp" data-loop-mobile="assets/films/hero-loop-mobile.webp">
-    <div class="filmhero__media" aria-hidden="true">
-      <img class="filmhero__poster" src="assets/films/hero-poster-1280.webp" srcset="assets/films/hero-poster-800.webp 800w, assets/films/hero-poster-1280.webp 1280w" sizes="100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+  <!-- Hero: slideshow of the client's featured renders -->
+  <section class="filmhero hero-show" aria-labelledby="hero-title" data-interval="6500">
+    <div class="filmhero__media hero-slides" aria-hidden="true">
+{{HERO_SLIDES}}
     </div>
     <div class="filmhero__frame" aria-hidden="true"></div>
-    <p class="filmhero__tag" aria-hidden="true"><i></i>Walkthrough film · Sheet A-01</p>
+    <p class="filmhero__tag" aria-hidden="true"><i></i>Featured work · No. <span data-slide-num>01</span></p>
     <div class="filmhero__inner">
       <div>
         <div class="rating-badge">
@@ -12,13 +12,25 @@
           <span><strong>4.9</strong> on Google · 42 reviews</span>
         </div>
         <h1 id="hero-title">Elevating luxury living through <em>cutting-edge</em> architecture.</h1>
-        <p class="lead">A Georgetown architecture &amp; construction consultancy with 18+ years of experience. Walk through your building on film before a single block is laid.</p>
+        <p class="lead">A Georgetown architecture &amp; construction consultancy with 18+ years of experience. From your first sketch to the finished build, you work with a team that listens.</p>
         <div class="btn-row">
           <a class="btn btn--light" href="contact.html">Book a Consultation <span aria-hidden="true">→</span></a>
-{{SHOWREEL}}
+          <a class="btn btn--play" href="projects.html">See our projects <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="filmhero__aside">
+        <div class="hero-caption" role="group" aria-roledescription="carousel" aria-label="Featured projects">
+          <p class="hero-caption__num"><span data-slide-num>01</span> / {{HERO_COUNT}}</p>
+          <p class="hero-caption__title"><a href="#" data-slide-link>—</a></p>
+          <p class="hero-caption__meta" data-slide-meta></p>
+          <div class="hero-caption__nav">
+            <button class="hero-arrow" type="button" data-slide-prev aria-label="Previous project">←</button>
+            <div class="hero-dots" role="tablist" aria-label="Choose project">
+{{HERO_DOTS}}
+            </div>
+            <button class="hero-arrow" type="button" data-slide-next aria-label="Next project">→</button>
+          </div>
+        </div>
         <div class="filmhero__statwrap">
           <p class="filmhero__stat">18<span>+</span></p>
           <p class="filmhero__statlabel">Years designing &amp; building in Guyana</p>
@@ -209,9 +221,7 @@
 
   <!-- CTA -->
   <section id="contact" class="cta-band on-dark" aria-labelledby="cta-title">
-    <img class="cta-band__bg" src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&amp;fit=crop&amp;w=1600&amp;q=60"
-         srcset="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&amp;fit=crop&amp;w=800&amp;q=60 800w, https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&amp;fit=crop&amp;w=1600&amp;q=60 1600w, https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&amp;fit=crop&amp;w=2400&amp;q=60 2400w"
-         sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async">
+    <img class="cta-band__bg" src="assets/projects/cummings-lodge-multipurpose-building/05-1600.webp" srcset="assets/projects/cummings-lodge-multipurpose-building/05-480.webp 480w, assets/projects/cummings-lodge-multipurpose-building/05-800.webp 800w, assets/projects/cummings-lodge-multipurpose-building/05-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="" loading="lazy" decoding="async">
     <div class="cta-band__inner" data-reveal>
       <div class="cta-band__copy">
         <p class="eyebrow">Start a project</p>
