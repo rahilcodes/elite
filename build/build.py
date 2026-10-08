@@ -15,7 +15,7 @@ TEL = 'tel:+5926189518'
 WA = 'https://wa.me/5926189518'
 MAPS = 'https://www.google.com/maps/search/?api=1&amp;query=6.8221819%2C-58.1375138&amp;query_place_id=ChIJ03RHaZnvr40RdVLlgewALBc'
 MAP_EMBED = 'https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m12!1m8!1m3!1d7923.1373402350919!2d-58.1375138!3d6.8221819!3m2!1i1024!2i768!4f13.1!2m1!1sElite+Architecture,+5th+%26+Earl%27s+Ave,+Subryanville,+Georgetown,+Guyana!6i16'
-EMAIL = 'info@elitearchitecturegy.com'
+EMAIL = 'elitearchitecturegy@gmail.com'
 STREET = "262 5th &amp; Earl's Avenue"
 AREA = 'Subryanville, Georgetown, Guyana'
 
@@ -52,7 +52,7 @@ def business_ld():
         "@id": SITE + "#business",
         "name": "Elite Architecture",
         "slogan": "Vision Evolved. Spaces Revolved.",
-        "description": "Architecture and construction consultancy in Georgetown, Guyana, with 18+ years of experience.",
+        "description": "Architecture and construction consultancy in Georgetown, Guyana, with 10+ years of experience.",
         "url": SITE,
         "telephone": PHONE,
         "image": SITE + "assets/logo-dark.png",
@@ -63,7 +63,7 @@ def business_ld():
         "geo": {"@type": "GeoCoordinates", "latitude": 6.8221819, "longitude": -58.1375138},
         "openingHoursSpecification": [
             {"@type": "OpeningHoursSpecification",
-             "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
              "opens": "09:00", "closes": "17:30"}],
         "founder": {"@type": "Person", "name": "Vickram Paul", "jobTitle": "CEO & Principal Architect"},
         "areaServed": {"@type": "Country", "name": "Guyana"},
@@ -244,9 +244,9 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
     </div>
     <dl class="footer-titleblock">
       <div><dt>Site</dt><dd>6.8222° N<br>58.1375° W</dd></div>
-      <div><dt>Hours</dt><dd>Sun–Fri 9am–5:30pm<br>Saturday closed</dd></div>
+      <div><dt>Hours</dt><dd>Mon–Fri 9am–5:30pm<br>Sat &amp; Sun closed</dd></div>
       <div><dt>Scale</dt><dd class="footer-scale"><span class="footer-scale__bar" aria-hidden="true"></span><span>1:1 with<br>your vision</span></dd></div>
-      <div class="footer-titleblock__north"><dt>Drawn by</dt><dd>Vickram Paul<br>18+ years</dd>
+      <div class="footer-titleblock__north"><dt>Drawn by</dt><dd>Vickram Paul<br>10+ years</dd>
         <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M20 8l6 20-6-5-6 5z"/><path d="M20 2v4"/></svg>
       </div>
     </dl>
@@ -459,7 +459,7 @@ ABOUT_FILMS = [
 
 FAQS = [
     ('Why choose Elite Architecture?',
-     'Because you get experience, creativity and care in one team. We have more than eighteen years of work behind us, we use current design technology, and we measure ourselves by whether you are satisfied. Our clients rate us 4.9 out of 5 on Google.'),
+     'Because you get experience, creativity and care in one team. We have more than ten years of work behind us, we use current design technology, and we measure ourselves by whether you are satisfied. Our clients rate us 4.9 out of 5 on Google.'),
     ('What services do you offer?',
      'Building designs, 3D concept designs, schematic designs, construction drawings, as-built drawings, landscape designs and civil engineering consultancy. We can take a project from the first concept to a complete drawing set, or help with a single stage.'),
     ('What does an architect actually do for me?',
@@ -632,7 +632,7 @@ def build_home():
                 % ((HERO_FIRST,) * 4))
     page('index.html',
          'Elite Architecture | Architects in Georgetown, Guyana',
-         'Georgetown architecture and construction consultancy with 18+ years of experience. Building designs, 3D concepts and construction drawings. Call +592-618-9518.',
+         'Georgetown architecture and construction consultancy with 10+ years of experience. Building designs, 3D concepts and construction drawings. Call +592-618-9518.',
          main, ld=[business_ld()], head_extra=intro_js, body_start=intro,
          og_image=SITE + HERO_FIRST + '-1600.webp')
 
@@ -644,7 +644,7 @@ def build_about():
            ('III', 'Designed for Guyana', "Designs built for Guyana's climate, materials and approval process."),
            ('IV', 'Plain language, no surprises', 'We explain each stage clearly and keep you informed from concept through construction.')]
     main = page_hero(crumbs, 'About the studio',
-                     'Eighteen years of turning ideas into <em>buildings</em>.',
+                     'Ten years of turning ideas into <em>buildings</em>.',
                      'Elite Architecture is an architecture and construction consultancy based in Georgetown, Guyana. We design homes, workplaces and public buildings — and stay with our clients until they are built.')
     story, promo = ABOUT_FILMS
     main += '''
@@ -671,7 +671,7 @@ def build_about():
         <p class="eyebrow">Our story</p>
         <h2 id="story-title">Vision evolved. Spaces revolved.</h2>
         <p>We design for better living. To us a home is more than a structure: it reflects the people who live in it, and it should make everyday life easier and more enjoyable.</p>
-        <p>Led by Vickram Paul, the studio has spent more than eighteen years shaping homes, apartment buildings, offices, warehouses and schools across Guyana. Our work rests on three things — professional concept development, quality architectural design and construction consultancy.</p>
+        <p>Led by Vickram Paul, the studio has spent more than ten years shaping homes, apartment buildings, offices, warehouses and schools across Guyana. Our work rests on three things — professional concept development, quality architectural design and construction consultancy.</p>
         <p>Every building tells a story. Ours is to make sure it is yours, built well, with the best materials and resources available.</p>
       </div>
     </div>
@@ -698,13 +698,13 @@ def build_about():
     <div class="container grid-split" data-reveal>
       <div>
         <p class="eyebrow">Why families and businesses choose us</p>
-        <h2 id="why-title">18+ years of experience, and a team that listens.</h2>
+        <h2 id="why-title">10+ years of experience, and a team that listens.</h2>
         <ol class="numbered-list">
 %s
         </ol>
       </div>
       <div class="stats">
-        <div class="stat"><p class="stat__num">18<span>+</span></p><p class="stat__label">Years of experience</p></div>
+        <div class="stat"><p class="stat__num">10<span>+</span></p><p class="stat__label">Years of experience</p></div>
         <div class="stat"><p class="stat__num">100<span>+</span></p><p class="stat__label">Happy clients</p></div>
         <div class="stat"><p class="stat__num">4.9<span class="star" aria-hidden="true">★</span></p><p class="stat__label">Google rating</p></div>
         <div class="stat"><p class="stat__num">6<span>+</span></p><p class="stat__label">Experienced staff</p></div>
@@ -762,8 +762,8 @@ def build_about():
        '\n'.join('          <li><span class="numbered-list__num" aria-hidden="true">%s</span><p><strong>%s</strong>%s</p></li>' % w for w in why),
        '\n'.join(team_card(t, 'h3') for t in TEAM[:3]))
     main += cta()
-    page('about.html', 'About Elite Architecture | 18+ Years of Design in Guyana',
-         'Meet Elite Architecture: a Georgetown architecture and construction consultancy led by Vickram Paul, with 18+ years of experience and a 4.9 Google rating.',
+    page('about.html', 'About Elite Architecture | 10+ Years of Design in Guyana',
+         'Meet Elite Architecture: a Georgetown architecture and construction consultancy led by Vickram Paul, with 10+ years of experience and a 4.9 Google rating.',
          main, active='about.html', ld=[business_ld(), crumbs_ld(crumbs)])
 
 
@@ -1111,7 +1111,7 @@ def build_contact():
           <div><dt>WhatsApp</dt><dd><a href="%s" target="_blank" rel="noopener">Message us on WhatsApp<span class="visually-hidden"> (opens in a new tab)</span></a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:%s">%s</a></dd></div>
           <div><dt>Address</dt><dd><address class="plain-address">%s<br>%s</address></dd></div>
-          <div><dt>Hours</dt><dd><div class="hours"><span>Sunday – Friday</span><span>9:00 am – 5:30 pm</span><span>Saturday</span><span>Closed</span></div></dd></div>
+          <div><dt>Hours</dt><dd><div class="hours"><span>Monday – Friday</span><span>9:00 am – 5:30 pm</span><span>Saturday – Sunday</span><span>Closed</span></div></dd></div>
         </dl>
       </div>
     </div>
@@ -1138,7 +1138,7 @@ def build_contact():
   </section>
 ''' % (EMAIL, EMAIL, PHONE, WA, TEL, PHONE, WA, EMAIL, EMAIL, STREET, AREA, MAPS, MAP_EMBED, STREET, AREA)
     page('contact.html', 'Contact Elite Architecture | Book a Consultation in Georgetown',
-         "Contact Elite Architecture at 5th & Earl's Avenue, Subryanville, Georgetown. Call or WhatsApp +592-618-9518 or email info@elitearchitecturegy.com.",
+         "Contact Elite Architecture at 5th & Earl's Avenue, Subryanville, Georgetown. Call or WhatsApp +592-618-9518 or email elitearchitecturegy@gmail.com.",
          main, active='contact.html', ld=[business_ld(), crumbs_ld(crumbs)])
 
 
