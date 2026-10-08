@@ -7,6 +7,7 @@ from html import escape as e
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'site')
 SITE = 'https://elitearchitecturegy.com/'
+SHARE_IMAGE = SITE + 'assets/share-banner.jpg'   # 1200x630 JPEG under 300 KB: what WhatsApp, Facebook, iMessage show
 # Changes whenever the stylesheet or script changes, so browsers never show a stale copy
 import hashlib
 VERSION = hashlib.md5(b''.join(open(os.path.join(OUT, f), 'rb').read() for f in ('css/styles.css', 'js/main.js'))).hexdigest()[:8]
@@ -136,7 +137,7 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
     depth = path.count('/')
     root = '' if base else '../' * depth
     canonical = SITE + ('' if path == 'index.html' else path)
-    og_image = og_image or SITE + 'assets/projects/demerara-estates-residence-1/05-1600.webp'
+    og_image = og_image or SHARE_IMAGE
     ld_html = '\n'.join('<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False)
                         for x in ld)
     footer_a = lambda h, n: '        <a href="%s%s"%s>%s</a>' % (root, h, ' aria-current="page"' if h == active else '', n)
@@ -156,6 +157,12 @@ def page(path, title, desc, main, active=None, og_image=None, ld=(), base=None, 
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{og_image}">
+<meta property="og:image:secure_url" content="{og_image}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Elite Architecture — architecture and construction consultancy, Georgetown, Guyana">
+<meta name="twitter:image" content="{og_image}">
 <meta property="og:locale" content="en_GY">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -634,7 +641,7 @@ def build_home():
          'Elite Architecture | Architects in Georgetown, Guyana',
          'Georgetown architecture and construction consultancy with 10+ years of experience. Building designs, 3D concepts and construction drawings. Call +592-618-9518.',
          main, ld=[business_ld()], head_extra=intro_js, body_start=intro,
-         og_image=SITE + HERO_FIRST + '-1600.webp')
+         og_image=SHARE_IMAGE)
 
 
 def build_about():
@@ -854,7 +861,7 @@ def build_services():
     ld = [business_ld(), crumbs_ld(crumbs)]
     page('services.html', 'Architecture Services in Guyana | Elite Architecture',
          'Building designs, 3D concepts, construction and as-built drawings, landscape design and civil engineering consultancy in Georgetown, Guyana.',
-         main, active='services.html', ld=ld, og_image=SITE + 'assets/projects/%s/%02d-1600.webp' % SERVICES[0]['project'])
+         main, active='services.html', ld=ld, og_image=SHARE_IMAGE)
 
 
 def build_projects():
@@ -885,7 +892,7 @@ def build_projects():
     page('projects.html', 'Projects & Portfolio | Elite Architecture, Guyana',
          'Residential, commercial and institutional projects by Elite Architecture, including Tuschen Secondary School and Belco Shipping Office.',
          main, active='projects.html', ld=[crumbs_ld(crumbs)],
-         og_image=SITE + 'assets/projects/%s/cover.jpg' % PROJECTS[0]['slug'])
+         og_image=SHARE_IMAGE)
 
 
 def build_project(i):
@@ -1228,7 +1235,7 @@ def build_films():
     page('films.html', 'Walkthrough Films | Elite Architecture, Guyana',
          'Watch 3D walkthrough films of homes, commercial buildings and industrial facilities designed by Elite Architecture in Guyana.',
          main, active='films.html', ld=[crumbs_ld(crumbs)], body_class='page--cinema',
-         og_image=SITE + 'assets/films/%02d-poster-1280.webp' % lead[0])
+         og_image=SHARE_IMAGE)
 
 
 def build_clients():
